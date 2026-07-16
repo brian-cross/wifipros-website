@@ -1,43 +1,49 @@
-# Astro Starter Kit: Minimal
+# Wi-Fi Pros Network Consulting — Website
 
-```sh
-npm create astro@latest -- --template minimal
+Marketing and lead-gen site for [Wi-Fi Pros Network Consulting Ltd.](https://wifipros.ca), a Ubiquiti-focused network design and installation company based in Sherwood Park, AB, serving the greater Edmonton area (including rural/acreage properties).
+
+Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com).
+
+## Tech Stack
+
+- **[Astro](https://astro.build)** — static site generation, content collections
+- **[Tailwind CSS v4](https://tailwindcss.com)** — utility-first styling with CSS custom properties for brand tokens
+- **TypeScript** (strict) — type-checked components and data schemas
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.20.8+, 20.3.0+, or 22.0.0+ (LTS recommended)
+
+### Installation
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Development
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Runs the dev server at `http://localhost:4321`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Build
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run build
+```
 
-## 🧞 Commands
+Outputs a production build to `./dist/`.
 
-All commands are run from the root of the project, from a terminal:
+### Preview production build
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run preview
+```
 
-## 👀 Want to learn more?
+## License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Proprietary — © Wi-Fi Pros Network Consulting Ltd. All rights reserved.
