@@ -1,17 +1,21 @@
 ---
-import "../styles/global.css";
+import Layout from "../components/layouts/Layout.astro";
+import Hero from "../components/home/Hero.astro";
+import PainPoints from "../components/home/PainPoints.astro";
+import Reframe from "../components/home/Reframe.astro";
+import ServicesAccordion from "../components/home/ServicesAccordion.astro";
+import ServiceAreas from "../components/home/ServiceAreas.astro";
+import ClosingCta from "../components/home/ClosingCTA.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-3xl font-bold">Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Wi-Fi Pros Network Consulting | Ubiquiti Network Design & Installation"
+  description="Ubiquiti network design and installation for homes and businesses in the greater Edmonton area, including rural and acreage properties."
+>
+  <Hero />
+  <PainPoints />
+  <Reframe />
+  <ServicesAccordion />
+  <ServiceAreas />
+  <ClosingCta />
+</Layout>
