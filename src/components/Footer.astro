@@ -1,0 +1,68 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<footer class="bg-ink text-paper">
+  <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-3">
+    <div>
+      <p class="font-display text-lg font-bold">Wi-Fi Pros</p>
+      <p class="mt-2 text-sm text-paper/70 font-body">
+        Network Consulting Ltd.
+      </p>
+      <p
+        class="mt-4 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-paper/70"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-connect animate-pulse"></span>
+        Serving Greater Edmonton &amp; area
+      </p>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wide text-paper/50 mb-3">
+        Quick Links
+      </p>
+      <ul class="space-y-2 text-sm">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-paper/80 hover:text-signal transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wide text-paper/50 mb-3">
+        Contact
+      </p>
+      <ul class="space-y-2 text-sm text-paper/80">
+        <li>
+          <a href="tel:+1XXXXXXXXXX" class="hover:text-signal transition-colors"
+            >(XXX) XXX-XXXX</a>
+        </li>
+        <li>
+          <a
+            href="mailto:info@wifipros.ca"
+            class="hover:text-signal transition-colors">info@wifipros.ca</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-paper/10 py-4">
+    <p class="text-center text-xs text-paper/50 font-mono">
+      © {new Date().getFullYear()} Wi-Fi Pros Network Consulting Ltd. All rights reserved.
+    </p>
+  </div>
+</footer>

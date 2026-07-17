@@ -1,0 +1,43 @@
+---
+// Swap in a real review once you have one to feature
+const review = {
+  quote: "[Review quote, kept under ~25 words]",
+  name: "[First name, Last initial]",
+  city: "[City]",
+};
+---
+
+<section class="mx-auto max-w-6xl px-6 py-16">
+  <h2 class="font-display text-2xl md:text-3xl font-bold text-ink max-w-2xl">
+    It's not your internet plan. It's your network.
+  </h2>
+  <p class="mt-5 text-slate max-w-2xl">
+    Most Wi-Fi problems trace back to one thing: a generic router doing a job it
+    was never built for. Add building materials, interference, and poor
+    placement, and even a fast connection can't get where it needs to go.
+  </p>
+  <p class="mt-4 text-slate max-w-2xl">
+    Wi-Fi Pros designs custom networks with
+    <a href="https://ui.com/" class="text-signal hover:underline">UniFi</a> and
+    <a
+      href="https://uisp.com/ca/uisp-overview"
+      class="text-signal hover:underline">UISP</a
+    >
+    hardware from Ubiquiti — the same equipment used in stadiums, hospitals, and hotel
+    chains, sized right for your home or business. We don't patch the problem with
+    a $40 extender. We fix the network so it stays fixed.
+  </p>
+  <a
+    href="/contact"
+    class="mt-6 inline-block font-medium text-signal hover:underline"
+  >
+    Not sure what's causing your dead zones? Get a free network assessment →
+  </a>
+
+  <blockquote class="mt-12 border-l-2 border-connect pl-5 max-w-xl">
+    <p class="text-ink italic">"{review.quote}"</p>
+    <footer class="mt-2 font-mono text-xs uppercase tracking-wide text-slate">
+      — {review.name}, {review.city}
+    </footer>
+  </blockquote>
+</section>

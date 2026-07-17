@@ -1,0 +1,39 @@
+---
+const points = [
+  {
+    title: "Buffering that hits at the worst time",
+    desc: "you're paying for a fast plan, but the picture still freezes.",
+  },
+  {
+    title: "Video calls that drop mid-sentence",
+    desc: "right when it's your turn to talk.",
+  },
+  {
+    title: "Wi-Fi that dies at the bedroom door",
+    desc: "perfect in the living room, gone everywhere else.",
+  },
+  {
+    title: "Smart devices that won't stay connected",
+    desc: "cameras, TVs, and speakers constantly falling offline.",
+  },
+];
+---
+
+<section class="bg-ink text-paper">
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <h2 class="font-display text-2xl md:text-3xl font-bold">Sound familiar?</h2>
+    <ul class="mt-8 grid gap-6 md:grid-cols-2">
+      {
+        points.map((p) => (
+          <li class="flex gap-3">
+            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-connect" />
+            <p>
+              <span class="font-medium">{p.title}</span>
+              <span class="text-paper/70"> — {p.desc}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
