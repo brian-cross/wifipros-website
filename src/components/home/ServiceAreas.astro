@@ -1,17 +1,5 @@
 ---
-// TODO: wire this to src/data/cities.json once that file exists in this project,
-// so the list stays in sync with the actual [city].astro route data.
-const cities = [
-  { name: "Sherwood Park", slug: "sherwood-park" },
-  { name: "Edmonton", slug: "edmonton" },
-  { name: "St. Albert", slug: "st-albert" },
-  { name: "Fort Saskatchewan", slug: "fort-saskatchewan" },
-  { name: "Leduc", slug: "leduc" },
-  { name: "Beaumont", slug: "beaumont" },
-  { name: "Devon", slug: "devon" },
-  { name: "Stony Plain", slug: "stony-plain" },
-  { name: "Spruce Grove", slug: "spruce-grove" },
-];
+import { cities } from "../../data/cities";
 ---
 
 <section class="bg-paper border-t border-line">
