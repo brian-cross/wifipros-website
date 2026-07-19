@@ -1,0 +1,24 @@
+---
+const {
+  size = "sm",
+  pulse = false,
+  class: className = "",
+}: {
+  size?: "sm" | "md";
+  pulse?: boolean;
+  class?: string;
+} = Astro.props;
+
+const sizeMap: Record<"sm" | "md", string> = {
+  sm: "h-1.5 w-1.5",
+  md: "h-2 w-2",
+};
+---
+
+<span
+  class:list={[
+    "rounded-full bg-connect shrink-0",
+    sizeMap[size] ?? sizeMap.sm,
+    pulse && "animate-pulse",
+    className,
+  ]}></span>

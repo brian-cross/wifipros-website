@@ -1,4 +1,6 @@
 ---
+import Bullet from "./Bullet.astro";
+
 const links = [
   { href: "/", label: "Home" },
   {
@@ -43,7 +45,10 @@ const isActiveLink = (href: string) =>
             ]}
           >
             {isActiveLink(link.href) && (
-              <span class="absolute -left-3.5 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-connect animate-pulse" />
+              <Bullet
+                class="absolute -left-3.5 top-1/2 -translate-y-1/2"
+                pulse
+              />
             )}
             {link.label}
           </a>
@@ -101,9 +106,7 @@ const isActiveLink = (href: string) =>
                   aria-controls="mobile-services-submenu"
                 >
                   <span class="flex items-center gap-2">
-                    {isActiveLink(link.href) && (
-                      <span class="h-1.5 w-1.5 rounded-full bg-connect animate-pulse" />
-                    )}
+                    {isActiveLink(link.href) && <Bullet pulse />}
                     {link.label}
                   </span>
                   <span class="text-[10px]">+</span>
@@ -135,9 +138,7 @@ const isActiveLink = (href: string) =>
                   { "text-ink": isActiveLink(link.href) },
                 ]}
               >
-                {isActiveLink(link.href) && (
-                  <span class="h-1.5 w-1.5 rounded-full bg-connect animate-pulse" />
-                )}
+                {isActiveLink(link.href) && <Bullet pulse />}
                 {link.label}
               </a>
             )}

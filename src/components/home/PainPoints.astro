@@ -1,4 +1,6 @@
 ---
+import Bullet from "../Bullet.astro";
+
 const points = [
   {
     title: "Buffering that hits at the worst time",
@@ -26,7 +28,7 @@ const points = [
       {
         points.map((p) => (
           <li class="flex gap-3">
-            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-connect" />
+            <Bullet class="mt-2" />
             <p>
               <span class="font-medium">{p.title}</span>
               <span class="text-paper/70"> — {p.desc}</span>

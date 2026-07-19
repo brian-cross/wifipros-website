@@ -1,4 +1,6 @@
 ---
+import Bullet from "./Bullet.astro";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/service-areas", label: "Service Areas" },
@@ -17,7 +19,7 @@ const links = [
       <p
         class="mt-4 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-paper/70"
       >
-        <span class="h-1.5 w-1.5 rounded-full bg-connect animate-pulse"></span>
+        <Bullet pulse />
         Serving Greater Edmonton &amp; area
       </p>
     </div>
@@ -49,12 +51,14 @@ const links = [
       <ul class="space-y-2 text-sm text-paper/80">
         <li>
           <a href="tel:+1XXXXXXXXXX" class="hover:text-signal transition-colors"
-            >(XXX) XXX-XXXX</a>
+            >(XXX) XXX-XXXX</a
+          >
         </li>
         <li>
           <a
             href="mailto:info@wifipros.ca"
-            class="hover:text-signal transition-colors">info@wifipros.ca</a>
+            class="hover:text-signal transition-colors">info@wifipros.ca</a
+          >
         </li>
       </ul>
     </div>
