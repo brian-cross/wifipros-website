@@ -1,10 +1,11 @@
 ---
 import Bullet from "./Bullet.astro";
+import FooterLogo from "./FooterLogo.astro";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/service-areas", label: "Service Areas" },
   { href: "/services", label: "Services" },
+  { href: "/service-areas", label: "Service Areas" },
   { href: "/contact", label: "Contact" },
 ];
 ---
@@ -12,10 +13,7 @@ const links = [
 <footer class="bg-ink text-paper">
   <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-3">
     <div>
-      <p class="font-display text-lg font-bold">Wi-Fi Pros</p>
-      <p class="mt-2 text-sm text-paper/70 font-body">
-        Network Consulting Ltd.
-      </p>
+      <FooterLogo />
       <p
         class="mt-4 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-paper/70"
       >
