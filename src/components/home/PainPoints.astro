@@ -1,5 +1,6 @@
 ---
 import Bullet from "../Bullet.astro";
+import Section from "../Section.astro";
 
 const points = [
   {
@@ -21,21 +22,19 @@ const points = [
 ];
 ---
 
-<section class="bg-ink text-paper border-t border-paper/10">
-  <div class="mx-auto max-w-6xl px-6 py-16">
-    <h2 class="h2-light">Sound familiar?</h2>
-    <ul class="mt-8 grid gap-6 md:grid-cols-2">
-      {
-        points.map((p) => (
-          <li class="flex gap-3">
-            <Bullet class="mt-2" />
-            <p>
-              <span class="font-medium">{p.title}</span>
-              <span class="text-paper/70"> — {p.desc}</span>
-            </p>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</section>
+<Section variant="dark">
+  <h2 class="h2-light">Sound familiar?</h2>
+  <ul class="mt-8 grid gap-6 md:grid-cols-2">
+    {
+      points.map((p) => (
+        <li class="flex gap-3">
+          <Bullet class="mt-2" />
+          <p>
+            <span class="font-medium">{p.title}</span>
+            <span class="text-paper/70"> — {p.desc}</span>
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
