@@ -2,6 +2,9 @@
 import Bullet from "./Bullet.astro";
 import Eyebrow from "./Eyebrow.astro";
 import FooterLogo from "./FooterLogo.astro";
+import { business } from "../data/business";
+
+const phoneHref = `tel:${business.phone.replace(/[^\d+]/g, "")}`;
 
 const links = [
   { href: "/", label: "Home" },
@@ -47,14 +50,14 @@ const links = [
       </p>
       <ul class="space-y-2 text-sm text-paper/80">
         <li>
-          <a href="tel:+1XXXXXXXXXX" class="hover:text-signal transition-colors"
-            >(XXX) XXX-XXXX</a
+          <a href={phoneHref} class="hover:text-signal transition-colors"
+            >{business.phone}</a
           >
         </li>
         <li>
           <a
-            href="mailto:info@wifipros.ca"
-            class="hover:text-signal transition-colors">info@wifipros.ca</a
+            href={`mailto:${business.email}`}
+            class="hover:text-signal transition-colors">{business.email}</a
           >
         </li>
       </ul>
@@ -63,7 +66,7 @@ const links = [
 
   <div class="border-t border-paper/10 py-4">
     <p class="text-center text-xs text-paper/50 font-mono">
-      © {new Date().getFullYear()} Wi-Fi Pros Network Consulting Ltd. All rights reserved.
+      © {new Date().getFullYear()} {business.legalName}. All rights reserved.
     </p>
   </div>
 </footer>
