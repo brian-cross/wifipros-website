@@ -1,5 +1,6 @@
 ---
 import Bullet from "../Bullet.astro";
+import Eyebrow from "../Eyebrow.astro";
 
 const categories = [
   {
@@ -71,12 +72,11 @@ const categories = [
 
 <section class="border-t border-line">
   <div class="mx-auto max-w-6xl px-6 py-16">
-    <p
-      class="font-mono text-xs uppercase tracking-wide text-signal flex items-center gap-2"
-    >
+    <Eyebrow>
       <Bullet pulse />
       What we do
-    </p>
+    </Eyebrow>
+    <h2>Our Services</h2>
     <p class="mt-3 text-slate max-w-[60ch]">
       Four areas of work — tap a category to see what's included.
     </p>

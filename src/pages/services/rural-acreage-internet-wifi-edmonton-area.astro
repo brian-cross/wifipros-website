@@ -1,5 +1,6 @@
 ---
 import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
 import Layout from "../../components/layouts/Layout.astro";
 ---
 
@@ -8,12 +9,10 @@ import Layout from "../../components/layouts/Layout.astro";
   description="Reliable internet and Wi-Fi solutions for rural properties, acreages, and multi-building sites across the Edmonton area."
 >
   <section class="mx-auto max-w-6xl px-6 pt-20 pb-16">
-    <p
-      class="font-mono text-xs uppercase tracking-wide text-signal flex items-center gap-2"
-    >
+    <Eyebrow>
       <Bullet pulse />
       Rural & Acreage Connectivity
-    </p>
+    </Eyebrow>
     <h1>Reliable Internet & Wi-Fi for Acreages and Rural Properties</h1>
     <p class="mt-5 text-slate max-w-xl text-lg">
       Living on an acreage shouldn’t mean settling for one weak router in the
@@ -22,12 +21,10 @@ import Layout from "../../components/layouts/Layout.astro";
       acreage lifestyle — connecting multiple buildings, covering large outdoor
       areas, and giving you the same reliability you’d expect in the city.
     </p>
-    <p
-      class="mt-4 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-slate"
-    >
+    <Eyebrow class="mt-4 text-slate!">
       <Bullet pulse />
       Local rural specialists · Wireless bridges · Buried fibre · Whole-property Wi-Fi
-    </p>
+    </Eyebrow>
     <div class="mt-8 flex flex-wrap gap-4">
       <a
         href="/contact"

@@ -1,5 +1,6 @@
 ---
 import Bullet from "./Bullet.astro";
+import Eyebrow from "./Eyebrow.astro";
 import FooterLogo from "./FooterLogo.astro";
 
 const links = [
@@ -14,12 +15,10 @@ const links = [
   <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-3">
     <div>
       <FooterLogo />
-      <p
-        class="mt-4 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-paper/70"
-      >
+      <Eyebrow class="mt-4 text-paper/70!">
         <Bullet pulse />
         Serving Greater Edmonton &amp; area
-      </p>
+      </Eyebrow>
     </div>
 
     <div>
