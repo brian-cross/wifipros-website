@@ -1,0 +1,117 @@
+---
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import { cities, type CitySlug } from "../../data/cities";
+
+interface CommunityDetail {
+  description: string;
+  linkText: string;
+}
+
+const communityDetails: Record<CitySlug, CommunityDetail> = {
+  "sherwood-park": {
+    description: "Our home base in Strathcona County.",
+    linkText: "Sherwood Park Services",
+  },
+  edmonton: {
+    description: "Serving homes and businesses throughout Edmonton.",
+    linkText: "Edmonton Services",
+  },
+  "st-albert": {
+    description: "Serving homes and businesses throughout St. Albert.",
+    linkText: "St. Albert Services",
+  },
+  "spruce-grove": {
+    description:
+      "Serving homes and businesses throughout Spruce Grove, plus nearby Parkland County acreages.",
+    linkText: "Spruce Grove Services",
+  },
+  "stony-plain": {
+    description:
+      "Serving homes and businesses throughout Stony Plain and the surrounding acreage areas of Parkland County.",
+    linkText: "Stony Plain Services",
+  },
+  devon: {
+    description:
+      "Serving homes and businesses throughout Devon and the surrounding acreage and country residential properties toward Leduc County.",
+    linkText: "Devon Services",
+  },
+  leduc: {
+    description:
+      "Serving homes and businesses throughout Leduc, including the Nisku / Edmonton International Airport commercial corridor.",
+    linkText: "Leduc Services",
+  },
+  beaumont: {
+    description: "Serving homes and businesses throughout Beaumont.",
+    linkText: "Beaumont Services",
+  },
+  "fort-saskatchewan": {
+    description:
+      "Serving homes and businesses throughout Fort Saskatchewan and the surrounding acreage areas of Strathcona and Sturgeon counties.",
+    linkText: "Fort Saskatchewan Services",
+  },
+};
+
+const ruralAcreage = {
+  name: "Rural & Acreage Properties",
+  href: "/services/rural-acreage-internet-wifi-edmonton-area",
+  description:
+    "Outside these towns? We design wireless building bridges (Ubiquiti UISP) and buried fibre connections for acreages and multi-building rural properties throughout Strathcona, Leduc, Parkland, and Sturgeon counties.",
+  linkText: "Rural & Acreage Connectivity",
+};
+---
+
+<Layout
+  title="Service Areas | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems across the greater Edmonton area, including Sherwood Park, Edmonton, St. Albert, and surrounding communities."
+>
+  <Section border={false} class="pt-20">
+    <h1>Communities We Serve</h1>
+    <div class="mt-8 space-y-6">
+      {
+        cities.map((city) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {city.name}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">
+              {communityDetails[city.slug].description}
+            </p>
+            <a
+              href={`/service-areas/${city.slug}`}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {communityDetails[city.slug].linkText} →
+            </a>
+          </article>
+        ))
+      }
+      <article class="py-2">
+        <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+          {ruralAcreage.name}
+        </h3>
+        <p class="max-w-2xl text-slate leading-relaxed">
+          {ruralAcreage.description}
+        </p>
+        <a
+          href={ruralAcreage.href}
+          class="mt-2 inline-block font-medium text-signal hover:underline"
+        >
+          {ruralAcreage.linkText} →
+        </a>
+      </article>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Not Sure If You're Within Our Service Area?</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      We regularly service properties throughout the greater Edmonton region
+      beyond this list.{" "}
+      <a href="/contact" class="text-signal hover:underline"> Get in touch </a>{
+        " "
+      }
+      and we'll let you know if we can help.
+    </p>
+  </Section>
+</Layout>

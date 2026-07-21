@@ -3,7 +3,7 @@ export interface City {
   slug: string;
 }
 
-export const cities: City[] = [
+export const cities = [
   { name: "Sherwood Park", slug: "sherwood-park" },
   { name: "Edmonton", slug: "edmonton" },
   { name: "St. Albert", slug: "st-albert" },
@@ -13,4 +13,6 @@ export const cities: City[] = [
   { name: "Devon", slug: "devon" },
   { name: "Stony Plain", slug: "stony-plain" },
   { name: "Spruce Grove", slug: "spruce-grove" },
-];
+] as const satisfies readonly City[];
+
+export type CitySlug = (typeof cities)[number]["slug"];
