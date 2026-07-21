@@ -1,0 +1,220 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const whyUnifiProtect = [
+  "No mandatory subscription. Footage records locally to your own Network Video Recorder (NVR) — no monthly cloud storage fee required to view or store your recordings.",
+  "You own your data. Footage stays on hardware at your property, not indefinitely on a third-party’s servers.",
+  "Integrates with your network. If you already have (or are installing) UniFi networking equipment, cameras plug into the same ecosystem and app.",
+  "Scales from a few cameras to dozens. Whether it’s a 4-camera residential setup or a 30-camera commercial property, the same platform handles both.",
+  "Remote viewing from anywhere. Check live footage or review recordings from your phone whether you’re in the next room or out of town.",
+];
+
+const cameraServices = [
+  {
+    title: "Residential Security Systems",
+    description:
+      "Driveway, entry, backyard, and perimeter coverage designed around your property’s actual layout and blind spots — plus doorbell cameras for package and visitor monitoring.",
+  },
+  {
+    title: "Commercial & Retail Security Systems",
+    description:
+      "Loss prevention, employee and customer safety, entry/exit monitoring, and coverage for parking areas and stockrooms — designed to meet insurance and liability documentation needs where applicable.",
+  },
+  {
+    title: "Acreage & Rural Property Monitoring",
+    description:
+      "Gate, driveway, and outbuilding coverage across large properties, often paired with a UISP wireless bridge or buried fibre connection to link cameras at detached buildings back to your main NVR. See our Rural & Acreage Connectivity page for details.",
+  },
+  {
+    title: "NVR Setup & Local Storage",
+    description:
+      "Proper sizing and configuration of your Network Video Recorder for the number of cameras, resolution, and retention period you need — so you’re not scrambling to find storage capacity later.",
+  },
+  {
+    title: "System Upgrades & Camera Additions",
+    description:
+      "Already have UniFi Protect or another camera system? We can expand coverage, replace aging cameras, or migrate you onto the UniFi platform.",
+  },
+];
+
+const processSteps = [
+  {
+    title: "1. Walkthrough & Coverage Planning",
+    description:
+      "We assess entry points, blind spots, lighting conditions, and priority areas — not just count how many cameras will “fit.”",
+  },
+  {
+    title: "2. Camera & NVR Selection",
+    description:
+      "We recommend camera types (dome, bullet, doorbell, PTZ) and resolution based on what each area actually needs — a driveway needs different coverage than a cash register.",
+  },
+  {
+    title: "3. Installation & Cabling",
+    description:
+      "Clean mounting and cable runs (PoE where possible for reliability and simplicity), properly weatherproofed for outdoor units.",
+  },
+  {
+    title: "4. Configuration",
+    description:
+      "Motion zones, smart detection (person/vehicle alerts), retention settings, and access permissions configured for how you’ll actually use the system.",
+  },
+  {
+    title: "5. Walkthrough & Handoff",
+    description:
+      "We show you how to access live view and recordings on your phone and answer questions before we consider the job finished.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Do I need a UniFi network to get UniFi Protect cameras?",
+    answer:
+      "No — Protect can run on its own network, though it integrates most seamlessly if you already have UniFi networking gear in place.",
+  },
+  {
+    question: "Is there a monthly fee for cloud storage?",
+    answer:
+      "No mandatory fee — footage records locally to your own NVR. Optional cloud backup exists if you want an added layer of off-site redundancy, but it’s not required to use the system.",
+  },
+  {
+    question: "How long is footage stored?",
+    answer:
+      "This depends on your NVR’s storage capacity, the number of cameras, and resolution settings. We size your system during design based on how long you want footage retained.",
+  },
+  {
+    question: "Can cameras cover a detached shop, barn, or second building?",
+    answer:
+      "Yes — often via a UniFi network extension or, for longer distances, a Ubiquiti UISP wireless bridge connecting the buildings.",
+  },
+  {
+    question: "Do you service existing camera systems that aren’t UniFi?",
+    answer:
+      "We primarily install and support UniFi Protect. In some cases we can advise on integrating or replacing non-UniFi systems — ask us during your consultation.",
+  },
+];
+---
+
+<Layout
+  title="UniFi Protect Camera Installation | Wi-Fi Pros"
+  description="UniFi Protect security camera design and installation for homes and businesses across the greater Edmonton area."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Security Camera Installation </Eyebrow>
+    <h1>UniFi Protect Security Camera Installation</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      See what’s happening at your home or business, from anywhere, without
+      paying a monthly subscription just to view your own footage. Wi-Fi Pros
+      Network Consulting designs and installs Ubiquiti UniFi Protect camera
+      systems — HD cameras, doorbell cameras, and centrally recorded NVRs — for
+      residential and commercial properties across the Edmonton area. Because
+      UniFi Protect runs on the same platform as UniFi networking gear, it
+      integrates cleanly if you already have (or are getting) a UniFi network
+      — one app, one system, no juggling separate camera and Wi-Fi platforms.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      No mandatory subscription · Local NVR storage · Remote viewing · UniFi integration
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Book a Free Camera System Consultation
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why UniFi Protect</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyUnifiProtect.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Camera System Services</h2>
+    <div class="mt-8 space-y-6">
+      {
+        cameraServices.map(({ title, description }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>How We Design a Camera System</h2>
+    <div class="mt-8 space-y-6">
+      {
+        processSteps.map(({ title, description }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get a Free Camera System Quote</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Tell us about your property and what you want covered — we’ll design a
+      system and give you a straightforward quote.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

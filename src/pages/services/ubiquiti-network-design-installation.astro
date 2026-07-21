@@ -1,0 +1,239 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const whyUnifi = [
+  "One unified system. Access points, switches, gateways, and cameras all run under one management platform — no juggling five different apps and vendors.",
+  "No forced subscriptions. Unlike many “prosumer” and enterprise systems, UniFi doesn’t lock core functionality behind recurring licensing fees.",
+  "Scales with you. A UniFi network designed for a 3-bedroom home uses the same underlying platform as one designed for a multi-unit commercial building — it grows with your needs instead of requiring a rip-and-replace.",
+  "Strong performance-to-cost ratio. UniFi delivers coverage, throughput, and reliability closer to true enterprise gear, without true enterprise pricing.",
+];
+
+const processSteps = [
+  {
+    title: "1. Site Assessment",
+    description:
+      "We walk the property (or review your building plans for new construction) to understand layout, construction materials, device density, and problem areas — not just count square footage.",
+  },
+  {
+    title: "2. Custom Design",
+    description:
+      "We map out access point placement, switch locations, cabling runs, and network segmentation (like separating guest Wi-Fi, security cameras, and business/operational traffic) specific to your space.",
+  },
+  {
+    title: "3. Installation",
+    description:
+      "Clean, professional installation — structured cabling where needed, properly mounted hardware, and a rack or equipment closet that’s tidy and labeled, not a tangle of cords.",
+  },
+  {
+    title: "4. Configuration & Testing",
+    description:
+      "Every network is configured for your actual use case — VLANs for business networks, guest portals for retail or hospitality, QoS for VoIP and video calls — then tested for coverage and speed before we call it done.",
+  },
+  {
+    title: "5. Documentation & Handoff",
+    description:
+      "You get clear documentation of what was installed and how to manage it, plus a walkthrough so you’re not left guessing.",
+  },
+];
+
+const whoWeDesignFor = [
+  {
+    title: "Residential",
+    description:
+      "Whole-home Wi-Fi coverage, multi-storey and multi-building properties, home offices, smart home device support, and elimination of dead zones — designed around how your household actually uses the internet.",
+  },
+  {
+    title: "Commercial",
+    description:
+      "Retail, medical/dental offices, warehouses, professional offices, and hospitality. We handle guest network isolation, POS and payment terminal reliability, VoIP support, and networks that hold up under real business demands.",
+  },
+  {
+    title: "Rural & Acreage",
+    description:
+      "Multi-building properties connected via Ubiquiti UISP wireless bridges or buried fibre, with full-property Wi-Fi coverage extended to shops, barns, and outbuildings. See our dedicated Rural & Acreage Connectivity page for details.",
+  },
+  {
+    title: "New Construction & Renovation",
+    description:
+      "Pre-wiring and structured cabling planned in at the framing stage saves significant cost and hassle compared to retrofitting — we work with builders and homeowners to get this right before drywall goes up.",
+  },
+];
+
+const commonProblems = [
+  "Wi-Fi that works in one room and drops in the next",
+  "Networks slowing to a crawl when multiple devices are active",
+  "Business networks with no separation between guest and internal traffic",
+  "Consumer mesh systems that can’t handle commercial-scale device counts",
+  "Poor outdoor coverage on properties with detached buildings or large yards",
+  "Legacy or failing equipment from a previous installer",
+];
+
+const faqs = [
+  {
+    question: "Do I need business-grade equipment for my home?",
+    answer:
+      "Not necessarily “business-grade,” but properly designed, yes. UniFi’s residential-appropriate hardware delivers a big step up from big-box routers without the cost of full commercial gear — we’ll recommend the right tier for your situation.",
+  },
+  {
+    question: "Can you work with the equipment I already have?",
+    answer:
+      "Often, yes. If you already have UniFi gear, we can usually expand or reconfigure your existing setup rather than starting from scratch. We’ll always tell you honestly when something’s worth keeping versus replacing.",
+  },
+  {
+    question: "Do you offer ongoing support after installation?",
+    answer:
+      "Yes — we offer support and maintenance plans for businesses that want ongoing monitoring and troubleshooting, as well as one-off service calls as needed.",
+  },
+  {
+    question: "How is this different from just buying a mesh Wi-Fi kit myself?",
+    answer:
+      "Consumer mesh kits are a generic, one-size-fits-all approach. We design around your specific space, separate traffic types properly, and use hardware built to run continuously under real load — plus you get a professional installation and someone to call when something needs adjusting.",
+  },
+];
+---
+
+<Layout
+  title="Network Design & Ubiquiti Installation | Wi-Fi Pros"
+  description="Professional network design and Ubiquiti UniFi installation for homes and businesses across the greater Edmonton area."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Network Design & Installation </Eyebrow>
+    <h1>Professional Network Design & Ubiquiti Installation</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Most Wi-Fi problems are not a hardware problem — they are a design
+      problem. A single router in the wrong spot, an unmanaged switch
+      overloaded with devices, or a mesh kit thrown at a coverage issue it was
+      never built to solve can leave a property with unreliable connectivity.
+      Wi-Fi Pros Network Consulting designs networks properly from the ground
+      up and then installs them using Ubiquiti’s UniFi platform — enterprise-grade
+      hardware at a price that makes sense for homes and small-to-mid-sized
+      businesses. We serve residential and commercial clients across the
+      greater Edmonton area, including Sherwood Park, St. Albert, Spruce
+      Grove, Stony Plain, Devon, Leduc, Beaumont, Fort Saskatchewan, and
+      surrounding rural properties.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Ubiquiti UniFi specialists · Custom design · Professional installation · Ongoing support
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Book a Free Network Assessment
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Ubiquiti UniFi</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      We standardize on Ubiquiti’s UniFi ecosystem for the projects we design
+      for a few practical reasons:
+    </p>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyUnifi.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Our Network Design & Installation Process</h2>
+    <div class="mt-8 space-y-6">
+      {
+        processSteps.map(({ title, description }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Who We Design Networks For</h2>
+    <div class="mt-8 space-y-6">
+      {
+        whoWeDesignFor.map(({ title, description }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Common Network Problems We Fix</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        commonProblems.map((problem) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{problem}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get a Free Network Design Quote</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Tell us about your space — home or business — and what’s not working
+      today. We’ll put together a straightforward design and quote.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>
