@@ -1,0 +1,146 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const stAlbertServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Whole-home coverage for houses of any size, plus reliable business networks for local offices and retail.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Driveway, entry, and perimeter coverage for homes, plus loss-prevention and access monitoring for local businesses.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+];
+
+const whyChooseUs = [
+  "Local to the Edmonton area — fast response times, not a call centre.",
+  "Ubiquiti UniFi specialists across both networking and camera systems.",
+  "Every job starts with a proper site assessment, not a guess.",
+  "Experience with both established homes and newer St. Albert subdivisions where builder-grade Wi-Fi often falls short.",
+];
+
+const faqs = [
+  {
+    question: "Do you service both older and newer homes in St. Albert?",
+    answer:
+      "Yes — older homes often need additional access points and wiring to overcome thicker walls and layout quirks, while newer builds often just need the builder-installed Wi-Fi properly redesigned.",
+  },
+  {
+    question: "Can you install cameras and networking together in one visit?",
+    answer:
+      "In most cases, yes, when both are scoped ahead of time — cameras run on the same UniFi platform as your network, so it’s an efficient combined install.",
+  },
+];
+---
+
+<Layout
+  title="St. Albert Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses throughout St. Albert."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> St. Albert </Eyebrow>
+    <h1>St. Albert’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses throughout St. Albert, residential and commercial alike.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Fast response times · Ubiquiti UniFi specialists
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in St. Albert</h2>
+    <div class="mt-8 space-y-6">
+      {
+        stAlbertServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why St. Albert Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free St. Albert Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

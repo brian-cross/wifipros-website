@@ -1,0 +1,148 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const leducServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "From residential whole-home coverage to commercial and light-industrial networks that hold up under real operational demands.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Locally recorded footage suited to both home security and commercial loss-prevention/access monitoring needs common in Leduc’s industrial and business park areas.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+];
+
+const whyChooseUs = [
+  "Local to greater Edmonton area with Leduc experience.",
+  "Ubiquiti UniFi specialists — networks that separate guest, operational, and security camera traffic properly.",
+  "Experience with warehouse/light-industrial spaces near Nisku.",
+  "Straightforward assessments and quotes.",
+];
+
+const faqs = [
+  {
+    question: "Do you work with warehouse and industrial spaces, or just offices and homes?",
+    answer:
+      "Yes — we regularly design networks and camera systems for warehouse, light-industrial, and business park properties around Nisku, in addition to standard offices and homes.",
+  },
+  {
+    question: "Can you handle a network with many connected devices, like point-of-sale or inventory systems?",
+    answer:
+      "Yes — commercial and industrial networks are designed with proper segmentation and capacity for POS systems, inventory scanners, VoIP, and other business-critical devices.",
+  },
+];
+---
+
+<Layout
+  title="Leduc Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses throughout Leduc, including the Nisku and Edmonton International Airport corridor."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Leduc </Eyebrow>
+    <h1>Leduc’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses throughout Leduc, including the commercial and industrial
+      operations around the Nisku Business Park and Edmonton International
+      Airport corridor.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Ubiquiti UniFi specialists · Commercial & industrial experience
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Leduc</h2>
+    <div class="mt-8 space-y-6">
+      {
+        leducServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Leduc Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Leduc Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

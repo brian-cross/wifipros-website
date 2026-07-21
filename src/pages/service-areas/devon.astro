@@ -1,0 +1,154 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const devonServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Reliable coverage for Devon homes, including properties where river valley terrain or building layout create tricky Wi-Fi conditions.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Locally recorded, remote-viewable footage for homes and small businesses.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+  {
+    title: "Rural & Acreage Connectivity",
+    description:
+      "Devon is surrounded by acreage and country residential properties.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+    linkText: "Rural & Acreage Connectivity",
+  },
+];
+
+const whyChooseUs = [
+  "Local to the greater Edmonton area — Devon is a regular part of our service territory, not an add-on.",
+  "Ubiquiti UniFi and UISP specialists for both in-town and rural properties.",
+  "Practical designs that account for Devon’s mix of terrain and property types.",
+  "Straightforward, honest quotes with no pressure to over-buy hardware.",
+];
+
+const faqs = [
+  {
+    question: "Do you work on properties near the river valley with challenging terrain?",
+    answer:
+      "Yes — we account for terrain, tree cover, and building layout during site assessment.",
+  },
+  {
+    question: "Do you serve acreages around Devon, not just the townsite?",
+    answer:
+      "Yes — acreage and country residential properties are a regular part of our service area.",
+  },
+];
+---
+
+<Layout
+  title="Devon Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses in Devon and surrounding acreage properties."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Devon </Eyebrow>
+    <h1>Devon’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses in Devon and the acreage and country residential properties
+      surrounding town toward Leduc County.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Ubiquiti UniFi & UISP specialists · Acreage experience
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Devon</h2>
+    <div class="mt-8 space-y-6">
+      {
+        devonServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Devon Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Devon Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

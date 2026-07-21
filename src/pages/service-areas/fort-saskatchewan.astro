@@ -1,0 +1,153 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const fortSaskatchewanServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Residential whole-home coverage plus commercial and light-industrial network design for local businesses.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Locally recorded footage for home security and business/site monitoring, including perimeter and access coverage relevant to industrial-adjacent properties.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+  {
+    title: "Rural & Acreage Connectivity",
+    description:
+      "Fort Saskatchewan is bordered by acreage and country residential areas in Strathcona and Sturgeon counties.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+    linkText: "Rural & Acreage Connectivity",
+  },
+];
+
+const whyChooseUs = [
+  "Local to the greater Edmonton area, with regular service to Fort Saskatchewan and surrounding rural properties.",
+  "Ubiquiti UniFi and UISP specialists across residential, commercial, and acreage properties.",
+  "Experience with the practical demands of businesses supporting Heartland-area operations.",
+  "Straightforward assessments and quotes for any property type.",
+];
+
+const faqs = [
+  {
+    question: "Do you service businesses connected to the Industrial Heartland, or only homes in town?",
+    answer:
+      "Both — we work with Fort Saskatchewan homes as well as local businesses and offices supporting Heartland-area operations.",
+  },
+  {
+    question: "Do you serve acreages around Fort Saskatchewan?",
+    answer:
+      "Yes — the areas surrounding Fort Saskatchewan include significant acreage and country residential properties.",
+  },
+];
+---
+
+<Layout
+  title="Fort Saskatchewan Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses in Fort Saskatchewan and surrounding acreage properties."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Fort Saskatchewan </Eyebrow>
+    <h1>Fort Saskatchewan’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses in Fort Saskatchewan.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Ubiquiti UniFi & UISP specialists · Heartland business experience
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Fort Saskatchewan</h2>
+    <div class="mt-8 space-y-6">
+      {
+        fortSaskatchewanServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Fort Saskatchewan Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Fort Saskatchewan Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

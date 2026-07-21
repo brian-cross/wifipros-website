@@ -1,0 +1,148 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const sherwoodParkServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Whole-home coverage for houses of any size, plus reliable business networks for offices, retail, and industrial spaces.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Locally recorded footage with no mandatory monthly fee, for homes and businesses alike.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+];
+
+const whyChooseUs = [
+  "Local, home-base team — same-day and next-day appointments are the norm, not the exception.",
+  "Ubiquiti UniFi specialists across both networking and camera systems.",
+  "Every job starts with a proper site assessment, not a guess.",
+  "Experience with both residential and commercial properties throughout Strathcona County.",
+];
+
+const faqs = [
+  {
+    question:
+      "Do you work with existing Ubiquiti equipment, or do we need to buy everything new?",
+    answer:
+      "We can often work with existing UniFi hardware and simply expand or reconfigure it. We’ll tell you honestly if a component needs replacing versus if it’s fine as-is.",
+  },
+  {
+    question: "Can you install cameras and networking together in one visit?",
+    answer:
+      "In most cases, yes, when both are scoped ahead of time — cameras run on the same UniFi platform as your network, making it an efficient combined install.",
+  },
+];
+---
+
+<Layout
+  title="Sherwood Park Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses in Sherwood Park and throughout Strathcona County."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Sherwood Park </Eyebrow>
+    <h1>Sherwood Park’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting is based right here in Sherwood Park,
+      designing and installing professional Wi-Fi networks and UniFi Protect
+      security camera systems for homes and businesses throughout Strathcona
+      County.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local home-base team · Same-day appointments · Ubiquiti UniFi specialists
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Sherwood Park</h2>
+    <div class="mt-8 space-y-6">
+      {
+        sherwoodParkServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Sherwood Park Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Sherwood Park Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

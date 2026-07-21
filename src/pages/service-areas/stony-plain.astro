@@ -1,0 +1,152 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const stonyPlainServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Full-property Wi-Fi for in-town homes and larger acreage lots.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description: "Locally recorded footage with no mandatory monthly fee.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+  {
+    title: "Rural & Acreage Connectivity",
+    description:
+      "Wireless building bridges and buried fibre for multi-building properties.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+    linkText: "Rural & Acreage Connectivity",
+  },
+];
+
+const whyChooseUs = [
+  "Local to greater Edmonton area.",
+  "Ubiquiti UISP and UniFi specialists.",
+  "Custom design for every property.",
+  "Familiarity with acreage subdivisions.",
+];
+
+const faqs = [
+  {
+    question: "We’re on an acreage just outside Stony Plain — do you still service us?",
+    answer: "Yes — this is one of our most common Stony Plain scenarios.",
+  },
+  {
+    question: "Can you cover a shop or detached garage in addition to the house?",
+    answer:
+      "Yes — whether it’s a short cable run or a wireless bridge to a separate building, we design coverage for the whole property, not just the main house.",
+  },
+];
+---
+
+<Layout
+  title="Stony Plain Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses in Stony Plain and surrounding Parkland County acreages."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Stony Plain </Eyebrow>
+    <h1>Stony Plain’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses in Stony Plain and the acreage properties that surround the
+      town throughout Parkland County.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Ubiquiti UISP & UniFi specialists · Acreage experience
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Stony Plain</h2>
+    <div class="mt-8 space-y-6">
+      {
+        stonyPlainServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Stony Plain Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Stony Plain Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

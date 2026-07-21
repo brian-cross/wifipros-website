@@ -1,0 +1,153 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const spruceGroveServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Full-property coverage for homes of any size, plus dependable networks for local retail and office spaces.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Home and business camera systems recording locally, no mandatory monthly fee.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+  {
+    title: "Nearby Rural & Acreage Connectivity",
+    description:
+      "Spruce Grove borders significant acreage country to the north and west.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+    linkText: "Rural & Acreage Connectivity",
+  },
+];
+
+const whyChooseUs = [
+  "Local to the greater Edmonton area, with fast response for both city and nearby acreage properties.",
+  "Ubiquiti UniFi specialists — one integrated platform for Wi-Fi and cameras.",
+  "Site assessment before any quote, not a generic package price.",
+  "Experience with Spruce Grove’s mix of established and rapidly growing newer subdivisions.",
+];
+
+const faqs = [
+  {
+    question: "Do you serve acreages just outside Spruce Grove, not only in town?",
+    answer:
+      "Yes — Spruce Grove is surrounded by acreage country in Parkland County, and we regularly work with properties just outside city limits.",
+  },
+  {
+    question: "How quickly can you get to a Spruce Grove job?",
+    answer:
+      "As part of our regular Edmonton-area service territory, Spruce Grove typically sees the same response times as our home base — often same-day or next-day for assessments.",
+  },
+];
+---
+
+<Layout
+  title="Spruce Grove Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses throughout Spruce Grove."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Spruce Grove </Eyebrow>
+    <h1>Spruce Grove’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses throughout Spruce Grove, residential and commercial alike.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Fast response times · Ubiquiti UniFi specialists
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Spruce Grove</h2>
+    <div class="mt-8 space-y-6">
+      {
+        spruceGroveServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Spruce Grove Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Spruce Grove Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

@@ -1,0 +1,149 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const beaumontServices = [
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description:
+      "Whole-home coverage for Beaumont’s mix of larger new-build homes and established properties.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Home and small business camera systems with local recording and no mandatory monthly fee.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+];
+
+const whyChooseUs = [
+  "Local to the greater Edmonton area — Beaumont is a regular part of our service territory.",
+  "Ubiquiti UniFi specialists, well-suited to Beaumont’s larger modern home layouts.",
+  "Every job starts with a real site assessment, not a generic package.",
+  "Experience with new-build homes where builder-installed Wi-Fi often underperforms.",
+];
+
+const faqs = [
+  {
+    question:
+      "Our home is new construction with builder-installed Wi-Fi that isn’t cutting it — can you help?",
+    answer:
+      "Yes — this is one of the most common calls we get from Beaumont’s newer subdivisions. Builder-grade equipment is rarely designed for the home’s actual layout, and we can usually improve coverage significantly with a proper redesign.",
+  },
+  {
+    question:
+      "Do you install cameras in newer Beaumont subdivisions with strict community aesthetics guidelines?",
+    answer:
+      "Yes — we can recommend camera placements and models that provide strong coverage while keeping a clean, low-profile appearance where that’s a consideration.",
+  },
+];
+---
+
+<Layout
+  title="Beaumont Network & Camera Installation | Wi-Fi Pros"
+  description="Ubiquiti network design, Wi-Fi installation, and UniFi Protect camera systems for homes and businesses throughout Beaumont."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Beaumont </Eyebrow>
+    <h1>Beaumont’s Ubiquiti Network & Camera Installation Experts</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Wi-Fi Pros Network Consulting designs and installs professional Wi-Fi
+      networks and UniFi Protect security camera systems for homes and
+      businesses throughout Beaumont, one of the fastest-growing communities
+      in the Edmonton region.
+    </p>
+    <Eyebrow class="mt-4 text-slate!">
+      <Bullet pulse />
+      Local Edmonton-area team · Ubiquiti UniFi specialists · New-build home experience
+    </Eyebrow>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services in Beaumont</h2>
+    <div class="mt-8 space-y-6">
+      {
+        beaumontServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              {linkText} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Why Beaumont Chooses Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2 max-w-2xl">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Beaumont Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>
