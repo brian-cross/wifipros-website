@@ -2,17 +2,15 @@
 import Bullet from "../../components/Bullet.astro";
 import Eyebrow from "../../components/Eyebrow.astro";
 import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
 ---
 
 <Layout
   title="Rural & Acreage Connectivity | Wi-Fi Pros"
   description="Reliable internet and Wi-Fi solutions for rural properties, acreages, and multi-building sites across the Edmonton area."
 >
-  <section class="mx-auto max-w-6xl px-6 pt-20 pb-16">
-    <Eyebrow>
-      <Bullet pulse />
-      Rural & Acreage Connectivity
-    </Eyebrow>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Rural & Acreage Connectivity </Eyebrow>
     <h1>Reliable Internet & Wi-Fi for Acreages and Rural Properties</h1>
     <p class="mt-5 text-slate max-w-xl text-lg">
       Living on an acreage shouldn’t mean settling for one weak router in the
@@ -39,180 +37,172 @@ import Layout from "../../components/layouts/Layout.astro";
         Contact Us
       </a>
     </div>
-  </section>
+  </Section>
 
-  <section class="mx-auto max-w-6xl px-6 pb-16">
-    <div class="space-y-14">
-      <section class="space-y-8 pt-8">
-        <h2>How We Connect Acreage Properties</h2>
-        <div class="space-y-6">
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Wireless Building-to-Building Bridges (Ubiquiti UISP)
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              When trenching isn’t practical or a second building is too far or
-              awkward to run cable to, we use Ubiquiti UISP wireless bridges to
-              link your house, shop, barn, or guest suite with a fast, stable
-              point-to-point connection.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Underground Fibre Runs
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              For permanent, maximum-reliability connections between buildings,
-              we install buried fibre optic cabling. Fibre is immune to
-              lightning-induced surges common on open acreage properties and
-              delivers the most future-proof bandwidth available.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Whole-Property Wi-Fi Coverage
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              Once the backbone is in place, we design outdoor and indoor Wi-Fi
-              coverage using Ubiquiti UniFi access points so signal reaches the
-              yard, the shop, the barn, and anywhere else you need it.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              UniFi Protect Security Cameras for Acreages
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              Rural properties benefit enormously from remote-viewable security
-              cameras covering driveways, gates, outbuildings, and perimeter
-              areas. We design UniFi Protect camera systems that run on the same
-              network as your connectivity, recorded locally on a UniFi NVR.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="space-y-6 pt-8">
-        <h2>Why Acreage Owners Choose Wi-Fi Pros</h2>
-        <ul class="space-y-3 text-slate">
-          <li class="py-2 max-w-2xl">
-            We understand rural properties, long distances, multiple structures,
-            and limited existing infrastructure.
-          </li>
-          <li class="py-2 max-w-2xl">
-            We recommend the right tool for the terrain — wireless bridges,
-            buried fibre, or a mix of both.
-          </li>
-          <li class="py-2 max-w-2xl">
-            We use enterprise-grade Ubiquiti hardware built for outdoor,
-            multi-building deployments.
-          </li>
-          <li class="py-2 max-w-2xl">
-            We’re local to the Edmonton area and familiar with the surrounding
-            acreage communities.
-          </li>
-        </ul>
-      </section>
-
-      <section class="space-y-6 pt-8">
-        <h2>Common Acreage Connectivity Scenarios We Solve</h2>
-        <ul class="space-y-3 text-slate">
-          <li class="py-2 max-w-2xl">
-            Connecting a detached shop or barn to house internet and Wi-Fi
-          </li>
-          <li class="py-2 max-w-2xl">
-            Extending reliable Wi-Fi across several acres of yard space
-          </li>
-          <li class="py-2 max-w-2xl">
-            Linking a guest cabin, secondary suite, or rental unit to the main
-            property network
-          </li>
-          <li class="py-2 max-w-2xl">
-            Replacing spotty or failing wireless setups from previous installers
-          </li>
-          <li class="py-2 max-w-2xl">
-            Adding remote-viewable security cameras at gates, driveways, and
-            outbuildings
-          </li>
-          <li class="py-2 max-w-2xl">
-            Preparing new-build acreages for connectivity before or during
-            construction
-          </li>
-        </ul>
-      </section>
-
-      <section class="space-y-8 pt-8">
-        <h2>Frequently Asked Questions</h2>
-        <div class="space-y-6">
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              How far apart can buildings be for a wireless bridge to work?
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              Ubiquiti UISP bridges can reliably cover distances well beyond
-              what’s typical on most acreage properties, provided there’s a
-              clear line of sight between antennas. We assess this on-site
-              before recommending wireless over buried fibre.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Is buried fibre more reliable than a wireless bridge?
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              Fibre is generally more resistant to weather and interference
-              since it’s underground, but it requires trenching. Many properties
-              do well with a wireless bridge, especially where trenching is
-              costly or disruptive.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Do you provide the internet service itself?
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              No — we design and install the network, cameras, and connectivity
-              infrastructure. We can advise on which internet sources are
-              available at your location, but the internet service itself comes
-              from a separate provider.
-            </p>
-          </article>
-          <article class="py-2">
-            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
-              Can this handle a farm or acreage-based business?
-            </h3>
-            <p class="max-w-2xl text-slate leading-relaxed">
-              Yes — we’ve designed networks for acreage properties with
-              home-based businesses, shops, and outbuildings that need
-              dependable, business-grade connectivity.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="pt-8">
-        <h2>Get a Free Rural Connectivity Assessment</h2>
-        <p class="mt-3 max-w-2xl text-slate leading-relaxed">
-          Every acreage is different. Tell us about your property — how many
-          buildings, approximate distances, and what’s not working today — and
-          we’ll recommend the right mix of wireless bridges, fibre, and Wi-Fi
-          coverage.
+  <Section>
+    <h2>How We Connect Acreage Properties</h2>
+    <div class="mt-8 space-y-6">
+      <article class="py-2">
+        <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+          Wireless Building-to-Building Bridges (Ubiquiti UISP)
+        </h3>
+        <p class="max-w-2xl text-slate leading-relaxed">
+          When trenching isn’t practical or a second building is too far or
+          awkward to run cable to, we use Ubiquiti UISP wireless bridges to link
+          your house, shop, barn, or guest suite with a fast, stable
+          point-to-point connection.
         </p>
-        <div class="mt-6 flex flex-wrap gap-4">
-          <a
-            href="/contact"
-            class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
-          >
-            Get a Free Quote
-          </a>
-          <a
-            href="/contact"
-            class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
-          >
-            Questions? Contact us!
-          </a>
-        </div>
-      </section>
+      </article>
+      <article class="py-2">
+        <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+          Underground Fibre Runs
+        </h3>
+        <p class="max-w-2xl text-slate leading-relaxed">
+          For permanent, maximum-reliability connections between buildings, we
+          install buried fibre optic cabling. Fibre is immune to
+          lightning-induced surges common on open acreage properties and
+          delivers the most future-proof bandwidth available.
+        </p>
+      </article>
+      <article class="py-2">
+        <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+          Whole-Property Wi-Fi Coverage
+        </h3>
+        <p class="max-w-2xl text-slate leading-relaxed">
+          Once the backbone is in place, we design outdoor and indoor Wi-Fi
+          coverage using Ubiquiti UniFi access points so signal reaches the
+          yard, the shop, the barn, and anywhere else you need it.
+        </p>
+      </article>
+      <article class="py-2">
+        <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+          UniFi Protect Security Cameras for Acreages
+        </h3>
+        <p class="max-w-2xl text-slate leading-relaxed">
+          Rural properties benefit enormously from remote-viewable security
+          cameras covering driveways, gates, outbuildings, and perimeter areas.
+          We design UniFi Protect camera systems that run on the same network as
+          your connectivity, recorded locally on a UniFi NVR.
+        </p>
+      </article>
     </div>
-  </section>
+  </Section>
+
+  <Section>
+    <h2>Why Acreage Owners Choose Wi-Fi Pros</h2>
+    <ul class="mt-6 space-y-3 text-slate">
+      <li class="py-2 max-w-2xl">
+        We understand rural properties, long distances, multiple structures, and
+        limited existing infrastructure.
+      </li>
+      <li class="py-2 max-w-2xl">
+        We recommend the right tool for the terrain — wireless bridges, buried
+        fibre, or a mix of both.
+      </li>
+      <li class="py-2 max-w-2xl">
+        We use enterprise-grade Ubiquiti hardware built for outdoor,
+        multi-building deployments.
+      </li>
+      <li class="py-2 max-w-2xl">
+        We’re local to the Edmonton area and familiar with the surrounding
+        acreage communities.
+      </li>
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Common Acreage Connectivity Scenarios We Solve</h2>
+    <ul class="mt-6 space-y-3 text-slate">
+      <li class="py-2 max-w-2xl">
+        Connecting a detached shop or barn to house internet and Wi-Fi
+      </li>
+      <li class="py-2 max-w-2xl">
+        Extending reliable Wi-Fi across several acres of yard space
+      </li>
+      <li class="py-2 max-w-2xl">
+        Linking a guest cabin, secondary suite, or rental unit to the main
+        property network
+      </li>
+      <li class="py-2 max-w-2xl">
+        Replacing spotty or failing wireless setups from previous installers
+      </li>
+      <li class="py-2 max-w-2xl">
+        Adding remote-viewable security cameras at gates, driveways, and
+        outbuildings
+      </li>
+      <li class="py-2 max-w-2xl">
+        Preparing new-build acreages for connectivity before or during
+        construction
+      </li>
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <article class="py-2">
+      <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+        How far apart can buildings be for a wireless bridge to work?
+      </h3>
+      <p class="max-w-2xl text-slate leading-relaxed">
+        Ubiquiti UISP bridges can reliably cover distances well beyond what’s
+        typical on most acreage properties, provided there’s a clear line of
+        sight between antennas. We assess this on-site before recommending
+        wireless over buried fibre.
+      </p>
+    </article>
+    <article class="py-2">
+      <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+        Is buried fibre more reliable than a wireless bridge?
+      </h3>
+      <p class="max-w-2xl text-slate leading-relaxed">
+        Fibre is generally more resistant to weather and interference since it’s
+        underground, but it requires trenching. Many properties do well with a
+        wireless bridge, especially where trenching is costly or disruptive.
+      </p>
+    </article>
+    <article class="py-2">
+      <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+        Do you provide the internet service itself?
+      </h3>
+      <p class="max-w-2xl text-slate leading-relaxed">
+        No — we design and install the network, cameras, and connectivity
+        infrastructure. We can advise on which internet sources are available at
+        your location, but the internet service itself comes from a separate
+        provider.
+      </p>
+    </article>
+    <article class="py-2">
+      <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+        Can this handle a farm or acreage-based business?
+      </h3>
+      <p class="max-w-2xl text-slate leading-relaxed">
+        Yes — we’ve designed networks for acreage properties with home-based
+        businesses, shops, and outbuildings that need dependable, business-grade
+        connectivity.
+      </p>
+    </article>
+  </Section>
+
+  <Section>
+    <h2>Get a Free Rural Connectivity Assessment</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Every acreage is different. Tell us about your property — how many
+      buildings, approximate distances, and what’s not working today — and we’ll
+      recommend the right mix of wireless bridges, fibre, and Wi-Fi coverage.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
 </Layout>
