@@ -1,5 +1,6 @@
 ---
 import Bullet from "./Bullet.astro";
+import { cities } from "../data/cities";
 
 const links = [
   { href: "/", label: "Home" },
@@ -16,17 +17,36 @@ const links = [
         label: "Camera Installation",
       },
       {
+        href: "/services/smart-building",
+        label: "Smart Building & Access",
+      },
+      {
         href: "/services/rural-acreage-internet-wifi-edmonton-area",
         label: "Rural & Acreage Connectivity",
       },
     ],
   },
-  { href: "/service-areas", label: "Service Areas" },
+  {
+    href: "/service-areas",
+    label: "Service Areas",
+    submenu: [
+      ...cities.map((city) => ({
+        href: `/service-areas/${city.slug}`,
+        label: city.name,
+      })),
+      {
+        href: "/service-areas/rural-acreage",
+        label: "Rural & Acreage",
+      },
+    ],
+  },
   { href: "/contact", label: "Contact" },
 ];
 const current = Astro.url.pathname;
 const isActiveLink = (href: string) =>
   current === href || current.startsWith(`${href}/`);
+const submenuId = (label: string) =>
+  `mobile-submenu-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 ---
 
 <nav class="relative">
@@ -103,7 +123,7 @@ const isActiveLink = (href: string) =>
                   class="flex w-full items-center justify-between gap-2 px-4 py-3 text-left uppercase text-slate hover:bg-ink/5 hover:text-ink"
                   data-submenu-toggle
                   aria-expanded="false"
-                  aria-controls="mobile-services-submenu"
+                  aria-controls={submenuId(link.label)}
                 >
                   <span class="flex items-center gap-2">
                     {isActiveLink(link.href) && <Bullet pulse />}
@@ -112,7 +132,7 @@ const isActiveLink = (href: string) =>
                   <span class="text-[10px]">+</span>
                 </button>
                 <ul
-                  id="mobile-services-submenu"
+                  id={submenuId(link.label)}
                   class="hidden bg-slate/5 px-4 pb-3"
                 >
                   {link.submenu.map((item) => (
@@ -161,7 +181,8 @@ const isActiveLink = (href: string) =>
 
   document.querySelectorAll("[data-submenu-toggle]").forEach((button) => {
     button.addEventListener("click", () => {
-      const submenu = document.getElementById("mobile-services-submenu");
+      const submenuId = button.getAttribute("aria-controls");
+      const submenu = submenuId ? document.getElementById(submenuId) : null;
       const isExpanded = button.getAttribute("aria-expanded") === "true";
 
       submenu?.classList.toggle("hidden");
