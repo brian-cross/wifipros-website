@@ -1,0 +1,172 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const smartBuildingServices = [
+  {
+    title: "UniFi Access — Door & Building Access Control",
+    description:
+      "Keycard readers, PIN pads, and mobile unlock — all managed from the same UniFi console as your cameras and network. No separate access-control vendor, no separate monthly fee stacked on top of what you’re already paying for security.",
+    goodFor:
+      "commercial suites, multi-tenant buildings, shops with staff-only areas, acreage properties with gated entry.",
+    includes: [
+      "Door readers (card/fob, PIN, or mobile credential)",
+      "Electric strike / maglock wiring and integration",
+      "Visitor and staff credential management",
+      "Tied into UniFi Protect for access-triggered camera recording",
+    ],
+  },
+  {
+    title: "Whole-Home & Whole-Building Audio",
+    description:
+      "Multi-room audio wired into the same network infrastructure as everything else — no separate wireless mesh fighting your Wi-Fi for bandwidth. Streaming, zoned control, in-ceiling or in-wall speakers, sized to the room and the budget.",
+    goodFor:
+      "new builds and renovations, acreage properties, offices and retail spaces wanting background/zoned audio.",
+    includes: [
+      "In-ceiling/in-wall speaker installation",
+      "Zoned, multi-room control",
+      "Low-voltage wiring done alongside network cabling (single visit, single contractor)",
+    ],
+  },
+  {
+    title: "UniFi Protect Sensors & Super Link Gateway",
+    description:
+      "Motion sensors, glass-break detection, and door/window contacts — all tied together through the Super Link Gateway into the same UniFi Protect console as your cameras. One alert feed, one app, one system, instead of a cameras app and a separate alarm-panel app.",
+    goodFor:
+      "homes and businesses wanting real alarm-style coverage (not just cameras) without adding a second monitoring vendor or subscription.",
+    includes: [
+      "UniFi Protect motion sensor placement and install",
+      "Glass-break sensor deployment for ground-floor windows/entries",
+      "Door/window contact sensors",
+      "Super Link Gateway setup, tying sensors into Protect alerts and camera-triggered recording",
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question:
+      "Can UniFi Access and Protect share the same cameras and hardware?",
+    answer:
+      "Yes — Access and Protect run on the same UniFi console, so a door event can trigger camera recording automatically without any separate integration work.",
+  },
+  {
+    question:
+      "Do I need to run new cable for whole-home audio, or can it work with an existing UniFi network?",
+    answer:
+      "It depends on the layout. If you already have a solid wired backbone from your network install, we can often tie audio into the same runs. Older or wireless-only setups usually need dedicated low-voltage cabling for the best sound and reliability.",
+  },
+  {
+    question:
+      "Do motion and glass-break sensors work with the cameras I already have?",
+    answer:
+      "Yes — if you’re on UniFi Protect, sensors connect through the Super Link Gateway and show up in the same app, and can trigger camera recording on the affected zone automatically.",
+  },
+  {
+    question: "Is this a true alarm system, or just sensors?",
+    answer:
+      "It functions as a real alarm layer — motion, glass-break, and door/window contacts all feed into Protect’s alert system — without a separate alarm panel or third-party monitoring subscription layered on top.",
+  },
+];
+---
+
+<Layout
+  title="Smart Building & Access Control | UniFi Access, Audio & UISP | Wi-Fi Pros"
+  description="UniFi Access control, whole-home audio, and Protect alarm sensors with Super Link Gateway — designed and installed by Wi-Fi Pros across greater Edmonton."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Beyond Wi-Fi </Eyebrow>
+    <h1>Smart Building & Access Solutions</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Once your UniFi network is solid, it becomes the backbone for everything
+      else in the building — door access, audio, and alarm-grade sensors tied
+      together through Protect. We design and install it all on the same
+      ecosystem, so nothing runs on a separate app or a separate vendor.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Get a Free Consultation
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Service Breakdown</h2>
+    <div class="mt-8 space-y-10">
+      {
+        smartBuildingServices.map(
+          ({ title, description, goodFor, includes }) => (
+            <article class="py-2">
+              <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+                {title}
+              </h3>
+              <p class="max-w-2xl text-slate leading-relaxed">{description}</p>
+              <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+                <span class="font-medium text-ink">Good for:</span> {goodFor}
+              </p>
+              <p class="mt-4 font-medium text-ink">What’s included:</p>
+              <ul class="mt-2 ml-4 space-y-2 text-slate">
+                {includes.map((item) => (
+                  <li class="flex items-start gap-3 max-w-2xl">
+                    <Bullet class="mt-2" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ),
+        )
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display font-semibold text-[19px] text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl text-slate leading-relaxed">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>One Vendor, One Ecosystem, One Point of Contact</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Whether it’s a single door reader or a full building-to-building network
+      with audio throughout, it’s all designed and installed by the same person
+      who built your network — not handed off to a subcontractor.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Book a Free Consultation
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

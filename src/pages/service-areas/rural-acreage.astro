@@ -1,0 +1,185 @@
+---
+import Bullet from "../../components/Bullet.astro";
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const ruralServices = [
+  {
+    title: "Rural & Acreage Connectivity",
+    description:
+      "Wireless building-to-building bridges and buried fibre for linking the house, shop, barn, or guest cabin.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+    linkText: "Rural & Acreage Connectivity",
+  },
+  {
+    title: "Wi-Fi & Network Design and Installation",
+    description: "Coverage across the whole property, not just the kitchen.",
+    href: "/services/ubiquiti-network-design-installation",
+    linkText: "Ubiquiti Network Design & Installation",
+  },
+  {
+    title: "UniFi Protect Security Cameras",
+    description:
+      "Locally recorded coverage for driveways, gates, and outbuildings, with no mandatory monthly fee.",
+    href: "/services/unifi-protect-camera-installation",
+    linkText: "UniFi Protect Camera Installation",
+  },
+];
+
+const communities = [
+  {
+    name: "Strathcona County",
+    description:
+      "the acreage subdivisions surrounding Sherwood Park, plus Ardrossan, Antler Lake, North and South Cooking Lake, Hastings Lake, Josephburg, and Collingwood Cove.",
+  },
+  {
+    name: "Leduc County",
+    description:
+      "rural properties around Beaumont, Calmar, and Devon, plus New Sarepta, Nisku, and the acreage subdivisions off Highway 39 and the QEII corridor.",
+  },
+  {
+    name: "Parkland County",
+    description:
+      "acreages surrounding Spruce Grove and Stony Plain, plus Duffield, Carvel, and the Wabamun Lake area.",
+  },
+];
+
+const whyChooseUs = [
+  "Local, home-base team — same-day and next-day appointments are the norm, not the exception.",
+  "Deep experience with multi-building, large-acreage layouts, not just single-lot city properties.",
+  "Every job starts with a proper site assessment, not a guess.",
+  "Ubiquiti UniFi and UISP specialists across networking, wireless bridges, and camera systems.",
+];
+
+const faqs = [
+  {
+    question: "Do you travel out to acreages, or just towns and cities?",
+    answer:
+      "Acreage and rural work is a core part of what we do — a large share of our installs are on rural properties, not in town.",
+  },
+  {
+    question: "How far from Sherwood Park will you travel?",
+    answer:
+      "We regularly work throughout Strathcona, Leduc, and Parkland counties. If you're further out, get in touch and we'll let you know if it's within reach.",
+  },
+];
+---
+
+<Layout
+  title="Rural & Acreage Wi-Fi, Network & Camera Installation | Wi-Fi Pros"
+  description="Professional Wi-Fi network, rural connectivity, and UniFi Protect camera installation for acreages and rural properties throughout Strathcona, Leduc, and Parkland counties."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Rural &amp; Acreage </Eyebrow>
+    <h1>
+      Rural &amp; Acreage Wi-Fi, Network &amp; Camera Installation Experts
+    </h1>
+    <p class="mt-5 max-w-xl text-lg text-slate">
+      Wi-Fi Pros Network Consulting is based in Sherwood Park, serving acreages
+      and rural properties throughout Strathcona County, Leduc County, and
+      Parkland County — designing and installing professional Wi-Fi networks and
+      UniFi Protect security camera systems built for multi-building,
+      large-property living.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/quote-request"
+        class="rounded-lg bg-signal px-6 py-3 font-medium text-paper transition-colors hover:bg-signal/90"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Services for Rural &amp; Acreage Properties</h2>
+    <div class="mt-8 space-y-6">
+      {
+        ruralServices.map(({ title, description, href, linkText }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display text-[19px] font-semibold text-ink">
+              {title}
+            </h3>
+            <p class="max-w-2xl leading-relaxed text-slate">{description}</p>
+            <a
+              href={href}
+              class="mt-2 inline-block font-medium text-signal hover:underline"
+            >
+              See our {linkText} page →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Communities We Serve</h2>
+    <div class="mt-8 space-y-6">
+      {
+        communities.map(({ name, description }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display text-[19px] font-semibold text-ink">
+              {name}
+            </h3>
+            <p class="max-w-2xl leading-relaxed text-slate">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="mt-6 max-w-2xl leading-relaxed text-slate">
+      Don't see your subdivision listed?
+      <a href="/contact" class="text-signal hover:underline"> Get in touch </a>
+      and we'll confirm we can reach you.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Why Rural Properties Choose Wi-Fi Pros</h2>
+    <ul class="mt-6 ml-4 max-w-2xl space-y-3 text-slate">
+      {
+        whyChooseUs.map((reason) => (
+          <li class="flex items-start gap-3 py-2">
+            <Bullet class="mt-2" />
+            <span>{reason}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section>
+    <h2>Frequently Asked Questions</h2>
+    <div class="mt-8 space-y-6">
+      {
+        faqs.map(({ question, answer }) => (
+          <article class="py-2">
+            <h3 class="mb-2 font-display text-[19px] font-semibold text-ink">
+              {question}
+            </h3>
+            <p class="max-w-2xl leading-relaxed text-slate">{answer}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Get Your Free Rural Connectivity Quote</h2>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/quote-request"
+        class="rounded-lg bg-signal px-6 py-3 font-medium text-paper transition-colors hover:bg-signal/90"
+      >
+        Get a free quote
+      </a>
+      <a
+        href="/contact"
+        class="rounded-lg border border-line px-6 py-3 font-medium text-ink transition-colors hover:bg-ink/5"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>

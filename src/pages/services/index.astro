@@ -1,0 +1,92 @@
+---
+import Eyebrow from "../../components/Eyebrow.astro";
+import Layout from "../../components/layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+
+const services = [
+  {
+    title: "Network Design & Ubiquiti Installation",
+    summary:
+      "The foundation — enterprise-grade UniFi networking designed and installed for full coverage, no dead zones, and room to grow.",
+    href: "/services/ubiquiti-network-design-installation",
+  },
+  {
+    title: "UniFi Protect Camera Installation",
+    summary:
+      "Cameras, recording, and monitoring on the same UniFi console as your network — no third-party DVR or subscription required.",
+    href: "/services/unifi-protect-camera-installation",
+  },
+  {
+    title: "Smart Building & Access",
+    summary:
+      "UniFi Access door control, whole-home audio, and Protect alarm sensors tied together through the Super Link Gateway.",
+    href: "/services/smart-building",
+  },
+  {
+    title: "Rural & Acreage Connectivity",
+    summary:
+      "Long-range wireless bridges and underground fibre for acreages and rural properties where standard cabling isn’t practical.",
+    href: "/services/rural-acreage-internet-wifi-edmonton-area",
+  },
+];
+---
+
+<Layout
+  title="Network, Security & Smart Building Services | Wi-Fi Pros"
+  description="Ubiquiti network design, UniFi Protect cameras, whole-home audio & access control, and rural/acreage connectivity — all designed and installed by Wi-Fi Pros in greater Edmonton."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> What We Do </Eyebrow>
+    <h1>Services</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      From the network itself to the cameras, access control, audio, and
+      connectivity that run on top of it — we design and install it all, on
+      Ubiquiti hardware, so nothing ends up split across vendors or apps.
+    </p>
+  </Section>
+
+  <Section>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        services.map(({ title, summary, href }) => (
+          <a
+            href={href}
+            class="group border border-line rounded-xl bg-paper p-6 transition-colors hover:border-signal/40"
+          >
+            <h3 class="font-display font-semibold text-[19px] text-ink transition-colors group-hover:text-signal">
+              {title}
+            </h3>
+            <p class="mt-2 text-slate leading-relaxed">{summary}</p>
+            <span class="mt-4 inline-block font-medium text-signal">
+              Learn more →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Not Sure Which Service You Need?</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Most projects touch more than one of these — a network install that
+      includes cameras, or an acreage build that needs both connectivity and
+      Wi-Fi coverage. Tell us what you’re working with and we’ll figure out
+      the right scope.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Book a Free Consultation
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Questions? Contact us!
+      </a>
+    </div>
+  </Section>
+</Layout>
