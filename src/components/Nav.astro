@@ -1,6 +1,5 @@
 ---
 import Bullet from "./Bullet.astro";
-import { cities } from "../data/cities";
 
 const links = [
   { href: "/", label: "Home" },
@@ -29,16 +28,6 @@ const links = [
   {
     href: "/service-areas",
     label: "Service Areas",
-    submenu: [
-      ...cities.map((city) => ({
-        href: `/service-areas/${city.slug}`,
-        label: city.name,
-      })),
-      {
-        href: "/service-areas/rural-acreage",
-        label: "Rural & Acreage",
-      },
-    ],
   },
   { href: "/contact", label: "Contact" },
 ];
