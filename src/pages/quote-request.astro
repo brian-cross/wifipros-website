@@ -1,0 +1,698 @@
+---
+import Eyebrow from "../components/Eyebrow.astro";
+import Layout from "../components/layouts/Layout.astro";
+import Section from "../components/Section.astro";
+
+const focusRingClass =
+  "focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal";
+const labelClass = "block text-sm font-medium text-ink mb-2";
+const inputClass = `w-full rounded-lg border border-line bg-paper px-4 py-3.5 text-ink placeholder:text-slate/60 focus:border-signal transition-colors ${focusRingClass}`;
+const progressClass =
+  "font-mono text-xs uppercase tracking-wide text-signal mb-2";
+const optionCardClass = `flex items-center gap-3 rounded-lg border border-line bg-paper px-4 py-3.5 has-checked:border-signal has-checked:bg-signal/5 transition-colors cursor-pointer has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-signal`;
+const primaryButtonClass = `bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors ${focusRingClass}`;
+const secondaryButtonClass = `border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors ${focusRingClass}`;
+
+const services = [
+  { value: "network_wifi", label: "Network / Wi-Fi" },
+  { value: "camera_surveillance", label: "Camera Surveillance" },
+  { value: "door_access", label: "Door Access" },
+  { value: "integrated_audio", label: "Integrated Audio" },
+  { value: "nas", label: "Network Attached Storage (NAS)" },
+];
+
+const internetProviders = [
+  "Rogers/Shaw",
+  "Telus",
+  "Northern Lights Fibre",
+  "Starlink",
+  "Other",
+];
+---
+
+<Layout
+  title="Request a Quote | Wi-Fi Pros"
+  description="Request a free quote from Wi-Fi Pros Network Consulting for network design, camera installation, or smart building services across the greater Edmonton area."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Quote Request </Eyebrow>
+    <h1>Request a Free Quote</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Answer a few quick questions about your property and what you need, and
+      we’ll follow up with next steps.
+    </p>
+  </Section>
+
+  <Section>
+    <form
+      id="quote-form"
+      name="quote-request"
+      method="POST"
+      enctype="multipart/form-data"
+      class="space-y-16"
+    >
+      <div id="step-announcer" class="sr-only" aria-live="polite"></div>
+
+      <!-- Step 1: Service Type -->
+      <fieldset data-step="1" class="space-y-7 scroll-mt-24">
+        <div>
+          <p class={progressClass}>Step 1 of 4</p>
+          <h2 tabindex="-1">Service Type</h2>
+        </div>
+
+        <fieldset data-field="service_type">
+          <legend class={labelClass}>Business or Residential?</legend>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class={optionCardClass}>
+              <input
+                type="radio"
+                name="service_type"
+                value="residential"
+                required
+                class="accent-signal"
+              />
+              Residential
+            </label>
+            <label class={optionCardClass}>
+              <input
+                type="radio"
+                name="service_type"
+                value="business"
+                required
+                class="accent-signal"
+              />
+              Business
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset data-field="services" data-required="true">
+          <legend class={labelClass}>
+            Products and services (select all that apply)
+          </legend>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {
+              services.map((service) => (
+                <label class={optionCardClass}>
+                  <input
+                    type="checkbox"
+                    name="services"
+                    value={service.value}
+                    class="accent-signal"
+                  />
+                  {service.label}
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <div class="flex justify-end gap-4">
+          <button
+            type="button"
+            data-nav="next"
+            class={primaryButtonClass}
+          >
+            Next
+          </button>
+        </div>
+      </fieldset>
+
+      <!-- Step 2: Property Details -->
+      <fieldset
+        data-step="2"
+        hidden
+        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
+      >
+        <div>
+          <p class={progressClass}>Step 2 of 4</p>
+          <h2 tabindex="-1">Property Details</h2>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div data-field="existing_wiring">
+            <label for="existing_wiring" class={labelClass}>
+              Does the building have existing network wiring?
+            </label>
+            <select
+              name="existing_wiring"
+              id="existing_wiring"
+              required
+              class={inputClass}
+            >
+              <option value="" selected disabled>Select an option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="not_sure">Not sure</option>
+            </select>
+          </div>
+
+          <div data-field="internet_provider">
+            <label for="internet_provider" class={labelClass}>
+              Internet provider
+            </label>
+            <select
+              name="internet_provider"
+              id="internet_provider"
+              class={inputClass}
+            >
+              <option value="" selected disabled>Select an option</option>
+              {
+                internetProviders.map((provider) => (
+                  <option value={provider}>{provider}</option>
+                ))
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div data-field="outbuildings">
+            <label for="outbuildings" class={labelClass}>
+              Any outbuildings to connect?
+            </label>
+            <select
+              name="outbuildings"
+              id="outbuildings"
+              required
+              class={inputClass}
+            >
+              <option value="" selected disabled>Select an option</option>
+              <option value="none">None</option>
+              <option value="one">One outbuilding</option>
+              <option value="multiple">Multiple outbuildings</option>
+            </select>
+          </div>
+
+          <div data-field="building_size_sqft" data-conditional="business-size" hidden>
+            <label for="building_size_sqft" class={labelClass}>
+              Approx. building size (sq ft)
+            </label>
+            <input
+              type="text"
+              name="building_size_sqft"
+              id="building_size_sqft"
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button
+            type="button"
+            data-nav="back"
+            class={secondaryButtonClass}
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            data-nav="next"
+            class={primaryButtonClass}
+          >
+            Next
+          </button>
+        </div>
+      </fieldset>
+
+      <!-- Step 3: Your Info -->
+      <fieldset
+        data-step="3"
+        hidden
+        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
+      >
+        <div>
+          <p class={progressClass}>Step 3 of 4</p>
+          <h2 tabindex="-1">Your Info</h2>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div data-field="first_name">
+            <label for="first_name" class={labelClass}>First name</label>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              required
+              class={inputClass}
+            />
+          </div>
+          <div data-field="last_name">
+            <label for="last_name" class={labelClass}>Last name</label>
+            <input
+              type="text"
+              name="last_name"
+              id="last_name"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div data-field="email">
+            <label for="email" class={labelClass}>Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              class={inputClass}
+            />
+          </div>
+          <div data-field="phone">
+            <label for="phone" class={labelClass}>Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div data-field="city">
+            <label for="city" class={labelClass}>City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              required
+              class={inputClass}
+            />
+          </div>
+          <div data-field="postal_code">
+            <label for="postal_code" class={labelClass}>Postal code</label>
+            <input
+              type="text"
+              name="postal_code"
+              id="postal_code"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button
+            type="button"
+            data-nav="back"
+            class={secondaryButtonClass}
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            data-nav="next"
+            class={primaryButtonClass}
+          >
+            Next
+          </button>
+        </div>
+      </fieldset>
+
+      <!-- Step 4: Extras & Submit -->
+      <fieldset
+        data-step="4"
+        hidden
+        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
+      >
+        <div>
+          <p class={progressClass}>Step 4 of 4</p>
+          <h2 tabindex="-1">Extras & Submit</h2>
+        </div>
+
+        <div>
+          <label for="timeline" class={labelClass}>Timeline</label>
+          <select name="timeline" id="timeline" class={inputClass}>
+            <option value="" selected disabled>Select an option</option>
+            <option value="asap">ASAP</option>
+            <option value="within_a_month">Within a month</option>
+            <option value="just_exploring">Just exploring</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="floorplan" class={labelClass}>
+            Floorplan upload (optional)
+          </label>
+          <input
+            type="file"
+            name="floorplan"
+            id="floorplan"
+            class={`${inputClass} file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:font-medium file:text-ink`}
+          />
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Uploading a floorplan allows us to determine access point and
+            camera placement for optimal coverage.
+          </p>
+        </div>
+
+        <div>
+          <label for="other_details" class={labelClass}>
+            Any other details
+          </label>
+          <textarea
+            name="other_details"
+            id="other_details"
+            rows="5"
+            class={inputClass}
+          ></textarea>
+        </div>
+
+        <div
+          id="quote-error"
+          hidden
+          role="alert"
+          class="rounded-lg border border-red-600 bg-red-600/5 px-4 py-3.5"
+        >
+          <p class="text-sm text-red-600">
+            Something went wrong submitting your request. Please check your
+            connection and try again.
+          </p>
+          <button
+            type="button"
+            id="quote-retry"
+            class={`mt-3 font-medium text-signal hover:underline ${focusRingClass}`}
+          >
+            Try again
+          </button>
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button
+            type="button"
+            data-nav="back"
+            class={secondaryButtonClass}
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            id="quote-submit"
+            class={primaryButtonClass}
+          >
+            Submit
+          </button>
+        </div>
+      </fieldset>
+    </form>
+
+    <div id="quote-success" hidden tabindex="-1" class="py-8 text-center">
+      <h2>Thanks — Your Request Is In!</h2>
+      <p class="mt-3 max-w-xl mx-auto text-slate leading-relaxed">
+        We’ve received your quote request and will follow up shortly with
+        next steps.
+      </p>
+    </div>
+  </Section>
+
+  <!--
+    Static shadow form for Netlify's build-time bot to detect field names.
+    Field names below must exactly match the live form above, or Netlify
+    silently drops submissions that include a field it doesn't recognize.
+  -->
+  <form
+    name="quote-request"
+    method="POST"
+    enctype="multipart/form-data"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="quote-request" />
+    <input name="bot-field" />
+    <input type="radio" name="service_type" value="residential" />
+    <input type="radio" name="service_type" value="business" />
+    <input type="checkbox" name="services" value="network_wifi" />
+    <input type="checkbox" name="services" value="camera_surveillance" />
+    <input type="checkbox" name="services" value="door_access" />
+    <input type="checkbox" name="services" value="integrated_audio" />
+    <input type="checkbox" name="services" value="nas" />
+    <select name="existing_wiring">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <option value="not_sure">Not sure</option>
+    </select>
+    <select name="internet_provider">
+      {
+        internetProviders.map((provider) => (
+          <option value={provider}>{provider}</option>
+        ))
+      }
+    </select>
+    <select name="outbuildings">
+      <option value="none">None</option>
+      <option value="one">One outbuilding</option>
+      <option value="multiple">Multiple outbuildings</option>
+    </select>
+    <input type="text" name="building_size_sqft" />
+    <input type="text" name="first_name" />
+    <input type="text" name="last_name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="city" />
+    <input type="text" name="postal_code" />
+    <select name="timeline">
+      <option value="asap">ASAP</option>
+      <option value="within_a_month">Within a month</option>
+      <option value="just_exploring">Just exploring</option>
+    </select>
+    <input type="file" name="floorplan" />
+    <textarea name="other_details"></textarea>
+  </form>
+</Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#quote-form");
+  const steps = Array.from(
+    form?.querySelectorAll<HTMLFieldSetElement>("fieldset[data-step]") ?? [],
+  );
+
+  const formState: Record<string, FormDataEntryValue[] | FormDataEntryValue> =
+    {};
+
+  function updateState(e: Event) {
+    const target = e.target as
+      | HTMLInputElement
+      | HTMLSelectElement
+      | HTMLTextAreaElement;
+    if (!target.name) return;
+
+    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+      const existing = formState[target.name];
+      const arr = Array.isArray(existing) ? [...existing] : [];
+      const idx = arr.indexOf(target.value);
+      if (target.checked && idx === -1) arr.push(target.value);
+      if (!target.checked && idx > -1) arr.splice(idx, 1);
+      formState[target.name] = arr;
+    } else if (target instanceof HTMLInputElement && target.type === "radio") {
+      if (target.checked) formState[target.name] = target.value;
+    } else if (target instanceof HTMLInputElement && target.type === "file") {
+      formState[target.name] = target.files
+        ? Array.from(target.files).map((f) => f.name)
+        : [];
+    } else {
+      formState[target.name] = target.value;
+    }
+  }
+
+  function updateConditionalFields() {
+    const selected = form?.querySelector<HTMLInputElement>(
+      'input[name="service_type"]:checked',
+    );
+    const sizeField = form?.querySelector<HTMLElement>(
+      '[data-conditional="business-size"]',
+    );
+    if (sizeField) {
+      sizeField.hidden = selected?.value !== "business";
+    }
+  }
+
+  form?.addEventListener("input", updateState);
+  form?.addEventListener("change", (e) => {
+    updateState(e);
+    updateConditionalFields();
+  });
+  updateConditionalFields();
+
+  function clearErrors(fieldset: HTMLFieldSetElement) {
+    fieldset.querySelectorAll(".field-error").forEach((el) => el.remove());
+    fieldset
+      .querySelectorAll("input, select, textarea")
+      .forEach((el) => el.classList.remove("border-red-600"));
+  }
+
+  function showError(container: HTMLElement, message: string) {
+    let error = container.querySelector<HTMLElement>(":scope > .field-error");
+    if (!error) {
+      error = document.createElement("p");
+      error.className = "field-error mt-2 text-sm text-red-600";
+      container.appendChild(error);
+    }
+    error.textContent = message;
+    container
+      .querySelectorAll("input, select, textarea")
+      .forEach((el) => el.classList.add("border-red-600"));
+  }
+
+  function validateStep(fieldset: HTMLFieldSetElement): boolean {
+    clearErrors(fieldset);
+    let valid = true;
+
+    fieldset.querySelectorAll<HTMLElement>("[data-field]").forEach((container) => {
+      if (container.hidden) return;
+
+      const name = container.dataset.field as string;
+      const checkboxes = container.querySelectorAll<HTMLInputElement>(
+        `input[type="checkbox"][name="${name}"]`,
+      );
+      const radios = container.querySelectorAll<HTMLInputElement>(
+        `input[type="radio"][name="${name}"]`,
+      );
+
+      if (checkboxes.length) {
+        if (
+          container.dataset.required === "true" &&
+          !Array.from(checkboxes).some((c) => c.checked)
+        ) {
+          showError(container, "Please select at least one option.");
+          valid = false;
+        }
+        return;
+      }
+
+      if (radios.length) {
+        const isRequired = Array.from(radios).some((r) => r.required);
+        if (isRequired && !Array.from(radios).some((r) => r.checked)) {
+          showError(container, "Please select one option.");
+          valid = false;
+        }
+        return;
+      }
+
+      const field = container.querySelector<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >(`[name="${name}"]`);
+      if (field && !field.checkValidity()) {
+        showError(container, field.validationMessage || "This field is required.");
+        valid = false;
+      }
+    });
+
+    return valid;
+  }
+
+  const announcer = document.getElementById("step-announcer");
+
+  function showStep(stepNumber: number) {
+    for (const fieldset of steps) {
+      const isActive = Number(fieldset.dataset.step) === stepNumber;
+      fieldset.hidden = !isActive;
+      if (isActive) {
+        fieldset.scrollIntoView({ behavior: "smooth", block: "start" });
+        const heading = fieldset.querySelector<HTMLElement>("h2");
+        heading?.focus();
+        if (announcer && heading) {
+          announcer.textContent = `Step ${stepNumber} of ${steps.length}: ${heading.textContent}`;
+        }
+      }
+    }
+  }
+
+  form?.querySelectorAll('[data-nav="next"]').forEach((button) => {
+    button.addEventListener("click", () => {
+      const current = button.closest<HTMLFieldSetElement>("fieldset[data-step]");
+      if (!current || !validateStep(current)) return;
+      const currentStep = Number(current.dataset.step ?? 1);
+      showStep(currentStep + 1);
+    });
+  });
+
+  form?.querySelectorAll('[data-nav="back"]').forEach((button) => {
+    button.addEventListener("click", () => {
+      const current = button.closest<HTMLFieldSetElement>("fieldset[data-step]");
+      const currentStep = Number(current?.dataset.step ?? 1);
+      showStep(currentStep - 1);
+    });
+  });
+
+  const errorBanner = document.getElementById("quote-error");
+  const successPanel = document.getElementById("quote-success");
+  const submitButton = document.getElementById(
+    "quote-submit",
+  ) as HTMLButtonElement | null;
+  const retryButton = document.getElementById("quote-retry");
+
+  async function submitQuoteRequest() {
+    if (!form) return;
+
+    if (errorBanner) errorBanner.hidden = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting…";
+    }
+
+    const data = new FormData();
+    data.append("form-name", "quote-request");
+
+    for (const [key, value] of Object.entries(formState)) {
+      if (key === "floorplan") continue;
+      if (Array.isArray(value)) {
+        value.forEach((v) => data.append(key, v));
+      } else {
+        data.append(key, value);
+      }
+    }
+
+    const fileInput = form.querySelector<HTMLInputElement>(
+      'input[name="floorplan"]',
+    );
+    if (fileInput?.files?.length) {
+      Array.from(fileInput.files).forEach((file) =>
+        data.append("floorplan", file),
+      );
+    }
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        body: data,
+      });
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+
+      form.hidden = true;
+      if (successPanel) {
+        successPanel.hidden = false;
+        successPanel.focus();
+      }
+      if (announcer) {
+        announcer.textContent = "Your quote request was submitted successfully.";
+      }
+    } catch (err) {
+      console.error("Quote request submission failed:", err);
+      if (errorBanner) errorBanner.hidden = false;
+      if (announcer) {
+        announcer.textContent =
+          "There was a problem submitting your request. Please try again.";
+      }
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit";
+      }
+    }
+  }
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const lastStep = steps[steps.length - 1];
+    if (lastStep && !validateStep(lastStep)) return;
+    submitQuoteRequest();
+  });
+
+  retryButton?.addEventListener("click", () => {
+    submitQuoteRequest();
+  });
+</script>
