@@ -3,15 +3,9 @@ import Bullet from "./Bullet.astro";
 import Eyebrow from "./Eyebrow.astro";
 import FooterLogo from "./FooterLogo.astro";
 import { business } from "../data/business";
+import { links } from "../data/links";
 
 const phoneHref = `tel:${business.phone.replace(/[^\d+]/g, "")}`;
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/service-areas", label: "Service Areas" },
-  { href: "/contact", label: "Contact" },
-];
 ---
 
 <footer class="bg-ink text-paper border-t border-paper/10">

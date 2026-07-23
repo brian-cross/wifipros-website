@@ -1,37 +1,7 @@
 ---
 import Bullet from "./Bullet.astro";
+import { links } from "../data/links";
 
-const links = [
-  { href: "/", label: "Home" },
-  {
-    href: "/services",
-    label: "Services",
-    submenu: [
-      {
-        href: "/services/ubiquiti-network-design-installation",
-        label: "Network Design & Installation",
-      },
-      {
-        href: "/services/unifi-protect-camera-installation",
-        label: "Camera Installation",
-      },
-      {
-        href: "/services/smart-building",
-        label: "Smart Building & Access",
-      },
-      {
-        href: "/services/rural-acreage-internet-wifi-edmonton-area",
-        label: "Rural & Acreage Connectivity",
-      },
-    ],
-  },
-  {
-    href: "/service-areas",
-    label: "Service Areas",
-  },
-  { href: "/contact", label: "Contact" },
-  { href: "/quote-request", label: "Quote Request" },
-];
 const current = Astro.url.pathname;
 const isActiveLink = (href: string) =>
   current === href || current.startsWith(`${href}/`);
