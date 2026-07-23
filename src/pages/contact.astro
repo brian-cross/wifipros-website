@@ -1,0 +1,130 @@
+---
+import Eyebrow from "../components/Eyebrow.astro";
+import Layout from "../components/layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import { business } from "../data/business";
+
+const phoneHref = `tel:${business.phone.replace(/[^\d+]/g, "")}`;
+
+const inputClass =
+  "w-full rounded-lg border border-line bg-paper px-4 py-3.5 text-ink placeholder:text-slate/60 focus:outline-none focus:border-signal transition-colors";
+const labelClass = "block text-sm font-medium text-ink mb-2";
+---
+
+<Layout
+  title="Contact Us | Wi-Fi Pros"
+  description="Get in touch with Wi-Fi Pros Network Consulting for a free quote on network design, camera installation, or rural connectivity across the greater Edmonton area."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Contact </Eyebrow>
+    <h1>Get In Touch</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Tell us about your property and what you need — home or business,
+      in-town or acreage — and we’ll get back to you with next steps.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Send Us a Message</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Fill out the form below and we’ll get back to you shortly, or reach us
+      directly using the information alongside it.
+    </p>
+    <div class="mt-10 grid gap-16 md:grid-cols-[1.5fr_1fr]">
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-7"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>
+            Don’t fill this out if you’re human: <input name="bot-field" />
+          </label>
+        </p>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div>
+            <label for="name" class={labelClass}>Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              class={inputClass}
+            />
+          </div>
+          <div>
+            <label for="email" class={labelClass}>Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="phone" class={labelClass}>Phone (optional)</label>
+          <input type="tel" name="phone" id="phone" class={inputClass} />
+        </div>
+
+        <div>
+          <label for="message" class={labelClass}>Message</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="6"
+            required
+            class={inputClass}
+            placeholder="Tell us about your property and what you're looking for."
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+        >
+          Send Message
+        </button>
+      </form>
+
+      <div>
+        <p class="font-mono text-xs uppercase tracking-wide text-slate mb-4">
+          Direct Contact
+        </p>
+        <ul class="space-y-4 text-ink">
+          <li>
+            <a
+              href={phoneHref}
+              class="font-medium hover:text-signal transition-colors"
+            >
+              {business.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${business.email}`}
+              class="font-medium hover:text-signal transition-colors"
+            >
+              {business.email}
+            </a>
+          </li>
+        </ul>
+
+        <p class="font-mono text-xs uppercase tracking-wide text-slate mt-10 mb-4">
+          Hours
+        </p>
+        <ul class="space-y-2 text-slate">
+          <li>Mon–Fri: {business.hours.weekdays}</li>
+          <li>Sat–Sun: {business.hours.weekends}</li>
+          <li>Holidays: {business.hours.holidays}</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+</Layout>
