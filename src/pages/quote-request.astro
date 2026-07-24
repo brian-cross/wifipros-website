@@ -108,22 +108,14 @@ const internetProviders = [
         </fieldset>
 
         <div class="flex justify-end gap-4">
-          <button
-            type="button"
-            data-nav="next"
-            class={primaryButtonClass}
-          >
+          <button type="button" data-nav="next" class={primaryButtonClass}>
             Next
           </button>
         </div>
       </fieldset>
 
       <!-- Step 2: Property Details -->
-      <fieldset
-        data-step="2"
-        hidden
-        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
-      >
+      <fieldset data-step="2" hidden class="space-y-7 scroll-mt-24">
         <div>
           <p class={progressClass}>Step 2 of 4</p>
           <h2 tabindex="-1">Property Details</h2>
@@ -184,7 +176,11 @@ const internetProviders = [
             </select>
           </div>
 
-          <div data-field="building_size_sqft" data-conditional="business-size" hidden>
+          <div
+            data-field="building_size_sqft"
+            data-conditional="business-size"
+            hidden
+          >
             <label for="building_size_sqft" class={labelClass}>
               Approx. building size (sq ft)
             </label>
@@ -198,29 +194,17 @@ const internetProviders = [
         </div>
 
         <div class="flex justify-between gap-4">
-          <button
-            type="button"
-            data-nav="back"
-            class={secondaryButtonClass}
-          >
+          <button type="button" data-nav="back" class={secondaryButtonClass}>
             Back
           </button>
-          <button
-            type="button"
-            data-nav="next"
-            class={primaryButtonClass}
-          >
+          <button type="button" data-nav="next" class={primaryButtonClass}>
             Next
           </button>
         </div>
       </fieldset>
 
       <!-- Step 3: Your Info -->
-      <fieldset
-        data-step="3"
-        hidden
-        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
-      >
+      <fieldset data-step="3" hidden class="space-y-7 scroll-mt-24">
         <div>
           <p class={progressClass}>Step 3 of 4</p>
           <h2 tabindex="-1">Your Info</h2>
@@ -296,29 +280,17 @@ const internetProviders = [
         </div>
 
         <div class="flex justify-between gap-4">
-          <button
-            type="button"
-            data-nav="back"
-            class={secondaryButtonClass}
-          >
+          <button type="button" data-nav="back" class={secondaryButtonClass}>
             Back
           </button>
-          <button
-            type="button"
-            data-nav="next"
-            class={primaryButtonClass}
-          >
+          <button type="button" data-nav="next" class={primaryButtonClass}>
             Next
           </button>
         </div>
       </fieldset>
 
       <!-- Step 4: Extras & Submit -->
-      <fieldset
-        data-step="4"
-        hidden
-        class="space-y-7 border-t border-line pt-12 scroll-mt-24"
-      >
+      <fieldset data-step="4" hidden class="space-y-7 scroll-mt-24">
         <div>
           <p class={progressClass}>Step 4 of 4</p>
           <h2 tabindex="-1">Extras & Submit</h2>
@@ -345,8 +317,8 @@ const internetProviders = [
             class={`${inputClass} file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:font-medium file:text-ink`}
           />
           <p class="mt-2 text-sm text-slate leading-relaxed">
-            Uploading a floorplan allows us to determine access point and
-            camera placement for optimal coverage.
+            Uploading a floorplan allows us to determine access point and camera
+            placement for optimal coverage.
           </p>
         </div>
 
@@ -358,8 +330,7 @@ const internetProviders = [
             name="other_details"
             id="other_details"
             rows="5"
-            class={inputClass}
-          ></textarea>
+            class={inputClass}></textarea>
         </div>
 
         <div
@@ -382,18 +353,10 @@ const internetProviders = [
         </div>
 
         <div class="flex justify-between gap-4">
-          <button
-            type="button"
-            data-nav="back"
-            class={secondaryButtonClass}
-          >
+          <button type="button" data-nav="back" class={secondaryButtonClass}>
             Back
           </button>
-          <button
-            type="submit"
-            id="quote-submit"
-            class={primaryButtonClass}
-          >
+          <button type="submit" id="quote-submit" class={primaryButtonClass}>
             Submit
           </button>
         </div>
@@ -403,8 +366,8 @@ const internetProviders = [
     <div id="quote-success" hidden tabindex="-1" class="py-8 text-center">
       <h2>Thanks — Your Request Is In!</h2>
       <p class="mt-3 max-w-xl mx-auto text-slate leading-relaxed">
-        We’ve received your quote request and will follow up shortly with
-        next steps.
+        We’ve received your quote request and will follow up shortly with next
+        steps.
       </p>
     </div>
   </Section>
@@ -476,9 +439,7 @@ const internetProviders = [
 
   function updateState(e: Event) {
     const target = e.target as
-      | HTMLInputElement
-      | HTMLSelectElement
-      | HTMLTextAreaElement;
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     if (!target.name) return;
 
     if (target instanceof HTMLInputElement && target.type === "checkbox") {
@@ -542,45 +503,50 @@ const internetProviders = [
     clearErrors(fieldset);
     let valid = true;
 
-    fieldset.querySelectorAll<HTMLElement>("[data-field]").forEach((container) => {
-      if (container.hidden) return;
+    fieldset
+      .querySelectorAll<HTMLElement>("[data-field]")
+      .forEach((container) => {
+        if (container.hidden) return;
 
-      const name = container.dataset.field as string;
-      const checkboxes = container.querySelectorAll<HTMLInputElement>(
-        `input[type="checkbox"][name="${name}"]`,
-      );
-      const radios = container.querySelectorAll<HTMLInputElement>(
-        `input[type="radio"][name="${name}"]`,
-      );
+        const name = container.dataset.field as string;
+        const checkboxes = container.querySelectorAll<HTMLInputElement>(
+          `input[type="checkbox"][name="${name}"]`,
+        );
+        const radios = container.querySelectorAll<HTMLInputElement>(
+          `input[type="radio"][name="${name}"]`,
+        );
 
-      if (checkboxes.length) {
-        if (
-          container.dataset.required === "true" &&
-          !Array.from(checkboxes).some((c) => c.checked)
-        ) {
-          showError(container, "Please select at least one option.");
+        if (checkboxes.length) {
+          if (
+            container.dataset.required === "true" &&
+            !Array.from(checkboxes).some((c) => c.checked)
+          ) {
+            showError(container, "Please select at least one option.");
+            valid = false;
+          }
+          return;
+        }
+
+        if (radios.length) {
+          const isRequired = Array.from(radios).some((r) => r.required);
+          if (isRequired && !Array.from(radios).some((r) => r.checked)) {
+            showError(container, "Please select one option.");
+            valid = false;
+          }
+          return;
+        }
+
+        const field = container.querySelector<
+          HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+        >(`[name="${name}"]`);
+        if (field && !field.checkValidity()) {
+          showError(
+            container,
+            field.validationMessage || "This field is required.",
+          );
           valid = false;
         }
-        return;
-      }
-
-      if (radios.length) {
-        const isRequired = Array.from(radios).some((r) => r.required);
-        if (isRequired && !Array.from(radios).some((r) => r.checked)) {
-          showError(container, "Please select one option.");
-          valid = false;
-        }
-        return;
-      }
-
-      const field = container.querySelector<
-        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-      >(`[name="${name}"]`);
-      if (field && !field.checkValidity()) {
-        showError(container, field.validationMessage || "This field is required.");
-        valid = false;
-      }
-    });
+      });
 
     return valid;
   }
@@ -604,7 +570,9 @@ const internetProviders = [
 
   form?.querySelectorAll('[data-nav="next"]').forEach((button) => {
     button.addEventListener("click", () => {
-      const current = button.closest<HTMLFieldSetElement>("fieldset[data-step]");
+      const current = button.closest<HTMLFieldSetElement>(
+        "fieldset[data-step]",
+      );
       if (!current || !validateStep(current)) return;
       const currentStep = Number(current.dataset.step ?? 1);
       showStep(currentStep + 1);
@@ -613,7 +581,9 @@ const internetProviders = [
 
   form?.querySelectorAll('[data-nav="back"]').forEach((button) => {
     button.addEventListener("click", () => {
-      const current = button.closest<HTMLFieldSetElement>("fieldset[data-step]");
+      const current = button.closest<HTMLFieldSetElement>(
+        "fieldset[data-step]",
+      );
       const currentStep = Number(current?.dataset.step ?? 1);
       showStep(currentStep - 1);
     });
@@ -669,7 +639,8 @@ const internetProviders = [
         successPanel.focus();
       }
       if (announcer) {
-        announcer.textContent = "Your quote request was submitted successfully.";
+        announcer.textContent =
+          "Your quote request was submitted successfully.";
       }
     } catch (err) {
       console.error("Quote request submission failed:", err);
