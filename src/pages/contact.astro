@@ -34,6 +34,7 @@ const labelClass = "block text-sm font-medium text-ink mb-2";
     </p>
     <div class="mt-10 grid gap-16 md:grid-cols-[1.5fr_1fr]">
       <form
+        id="contact-form"
         name="contact"
         method="POST"
         data-netlify="true"
@@ -89,6 +90,7 @@ const labelClass = "block text-sm font-medium text-ink mb-2";
 
         <button
           type="submit"
+          id="contact-submit"
           class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
         >
           Send Message
@@ -138,5 +140,202 @@ const labelClass = "block text-sm font-medium text-ink mb-2";
         </ul>
       </div>
     </div>
+
+    <div
+      id="contact-modal"
+      hidden
+      class="fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div id="contact-modal-backdrop" class="absolute inset-0 bg-ink/60"></div>
+      <div
+        id="contact-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Message status"
+        tabindex="-1"
+        class="relative w-full max-w-md rounded-lg bg-paper p-8 shadow-xl focus:outline-none"
+      >
+        <button
+          type="button"
+          id="contact-modal-close"
+          aria-label="Close"
+          class="absolute right-4 top-4 cursor-pointer text-slate hover:text-ink transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-5 w-5"
+          >
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <div id="contact-modal-content" aria-live="polite" class="text-center">
+          <div data-modal-state="loading" class="py-4">
+            <div
+              class="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-line border-t-signal"
+            >
+            </div>
+            <p class="mt-4 font-medium text-ink">Sending your message…</p>
+          </div>
+
+          <div data-modal-state="success" hidden class="py-4">
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-600/10 text-green-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <path d="M20 6 9 17l-5-5"></path>
+              </svg>
+            </div>
+            <h2 class="mt-4">Thanks — Your Message Is In!</h2>
+            <p class="mt-2 text-slate leading-relaxed">
+              We’ve received your message and will get back to you shortly.
+            </p>
+          </div>
+
+          <div data-modal-state="error" hidden class="py-4">
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-600/10 text-red-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <path d="M18 6 6 18M6 6l12 12"></path>
+              </svg>
+            </div>
+            <h2 class="mt-4">Something Went Wrong</h2>
+            <p class="mt-2 text-slate leading-relaxed">
+              We couldn’t send your message. Please check your connection and
+              try again.
+            </p>
+            <button
+              type="button"
+              id="contact-modal-retry"
+              class="mt-4 cursor-pointer font-medium text-signal hover:underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+            >
+              Try again
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </Section>
 </Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const submitButton = document.getElementById(
+    "contact-submit",
+  ) as HTMLButtonElement | null;
+
+  const modal = document.getElementById("contact-modal");
+  const modalPanel = document.getElementById("contact-modal-panel");
+  const modalBackdrop = document.getElementById("contact-modal-backdrop");
+  const modalCloseButton = document.getElementById("contact-modal-close");
+  const modalRetryButton = document.getElementById("contact-modal-retry");
+  const modalStates = modal
+    ? Array.from(
+        modal.querySelectorAll<HTMLElement>("[data-modal-state]"),
+      )
+    : [];
+
+  let lastFocusedElement: HTMLElement | null = null;
+  let lastResult: "success" | "error" | null = null;
+
+  function showModalState(state: "loading" | "success" | "error") {
+    modalStates.forEach((el) => {
+      el.hidden = el.dataset.modalState !== state;
+    });
+  }
+
+  function openModal() {
+    if (!modal) return;
+    lastFocusedElement = document.activeElement as HTMLElement | null;
+    modal.hidden = false;
+    document.body.classList.add("overflow-hidden");
+    modalPanel?.focus();
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove("overflow-hidden");
+    if (lastResult === "success") {
+      form?.reset();
+    }
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send Message";
+    }
+    lastFocusedElement?.focus();
+  }
+
+  async function submitContactForm() {
+    if (!form) return;
+
+    showModalState("loading");
+    openModal();
+    if (submitButton) submitButton.disabled = true;
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        body: data,
+      });
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+
+      lastResult = "success";
+      showModalState("success");
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      lastResult = "error";
+      showModalState("error");
+    }
+  }
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitContactForm();
+  });
+
+  modalRetryButton?.addEventListener("click", () => {
+    submitContactForm();
+  });
+
+  modalCloseButton?.addEventListener("click", () => {
+    closeModal();
+  });
+
+  modalBackdrop?.addEventListener("click", () => {
+    closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.hidden) {
+      closeModal();
+    }
+  });
+</script>
