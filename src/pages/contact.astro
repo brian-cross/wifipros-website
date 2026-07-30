@@ -162,8 +162,7 @@ const labelClass = "block text-sm font-medium text-ink mb-2";
 
   const modal = createFormStatusModal("contact", {
     onRetry: () => submitContactForm(),
-    onClose: (result) => {
-      if (result === "success") form?.reset();
+    onClose: () => {
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.textContent = "Send Message";

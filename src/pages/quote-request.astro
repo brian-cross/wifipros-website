@@ -577,18 +577,9 @@ const internetProviders = [
     "quote-submit",
   ) as HTMLButtonElement | null;
 
-  function resetQuoteForm() {
-    form?.reset();
-    Object.keys(formState).forEach((key) => delete formState[key]);
-    updateConditionalFields();
-    steps.forEach((fieldset) => clearErrors(fieldset));
-    showStep(1);
-  }
-
   const modal = createFormStatusModal("quote", {
     onRetry: () => submitQuoteRequest(),
-    onClose: (result) => {
-      if (result === "success") resetQuoteForm();
+    onClose: () => {
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.textContent = "Submit";
