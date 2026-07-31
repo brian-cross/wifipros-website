@@ -28,7 +28,7 @@ const phoneHref = `tel:${business.phone.replace(/[^\d+]/g, "")}`;
             <li>
               <a
                 href={link.href}
-                class="text-paper/80 hover:text-signal transition-colors"
+                class="text-paper/80 hover:text-[#3b82f6] transition-colors"
               >
                 {link.label}
               </a>
@@ -44,14 +44,14 @@ const phoneHref = `tel:${business.phone.replace(/[^\d+]/g, "")}`;
       </p>
       <ul class="space-y-2 text-sm text-paper/80">
         <li>
-          <a href={phoneHref} class="hover:text-signal transition-colors"
+          <a href={phoneHref} class="hover:text-[#3b82f6] transition-colors"
             >{business.phone}</a
           >
         </li>
         <li>
           <a
             href={`mailto:${business.email}`}
-            class="hover:text-signal transition-colors">{business.email}</a
+            class="hover:text-[#3b82f6] transition-colors">{business.email}</a
           >
         </li>
       </ul>

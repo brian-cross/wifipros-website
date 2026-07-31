@@ -1,0 +1,39 @@
+---
+import Eyebrow from "../components/Eyebrow.astro";
+import Layout from "../components/layouts/Layout.astro";
+import Section from "../components/Section.astro";
+---
+
+<Layout
+  title="Page Not Found | Wi-Fi Pros"
+  description="The page you're looking for doesn't exist. Find your way back to Wi-Fi Pros Network Consulting's services, service areas, or contact page."
+>
+  <Section border={false} class="pt-20 pb-20">
+    <Eyebrow> 404 </Eyebrow>
+    <h1>Page Not Found</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      The page you're looking for doesn't exist or may have moved. Here are a
+      few places to go instead.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/"
+        class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+      >
+        Back to Home
+      </a>
+      <a
+        href="/services"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        View Our Services
+      </a>
+      <a
+        href="/contact"
+        class="border border-line text-ink font-medium px-6 py-3 rounded-lg hover:bg-ink/5 transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </Section>
+</Layout>

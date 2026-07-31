@@ -56,6 +56,7 @@ const internetProviders = [
 
       <!-- Step 1: Service Type -->
       <fieldset data-step="1" class="space-y-7 scroll-mt-24">
+        <legend class="sr-only">Step 1 of 4: Service Type</legend>
         <div>
           <p class={progressClass}>Step 1 of 4</p>
           <h2 tabindex="-1">Service Type</h2>
@@ -117,6 +118,7 @@ const internetProviders = [
 
       <!-- Step 2: Property Details -->
       <fieldset data-step="2" hidden class="space-y-7 scroll-mt-24">
+        <legend class="sr-only">Step 2 of 4: Property Details</legend>
         <div>
           <p class={progressClass}>Step 2 of 4</p>
           <h2 tabindex="-1">Property Details</h2>
@@ -206,6 +208,7 @@ const internetProviders = [
 
       <!-- Step 3: Your Info -->
       <fieldset data-step="3" hidden class="space-y-7 scroll-mt-24">
+        <legend class="sr-only">Step 3 of 4: Your Info</legend>
         <div>
           <p class={progressClass}>Step 3 of 4</p>
           <h2 tabindex="-1">Your Info</h2>
@@ -286,6 +289,7 @@ const internetProviders = [
 
       <!-- Step 4: Extras & Submit -->
       <fieldset data-step="4" hidden class="space-y-7 scroll-mt-24">
+        <legend class="sr-only">Step 4 of 4: Extras & Submit</legend>
         <div>
           <p class={progressClass}>Step 4 of 4</p>
           <h2 tabindex="-1">Extras & Submit</h2>
@@ -301,7 +305,7 @@ const internetProviders = [
           </select>
         </div>
 
-        <div>
+        <div data-field="floorplan">
           <label for="floorplan" class={labelClass}>
             Floorplan upload (optional)
           </label>
@@ -309,11 +313,12 @@ const internetProviders = [
             type="file"
             name="floorplan"
             id="floorplan"
+            accept="image/*,.pdf"
             class={`${inputClass} file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:font-medium file:text-ink`}
           />
           <p class="mt-2 text-sm text-slate leading-relaxed">
-            Uploading a floorplan allows us to determine access point and camera
-            placement for optimal coverage.
+            Uploading a floorplan allows us to determine access point and
+            camera placement for optimal coverage. Images or PDFs, up to 8MB.
           </p>
         </div>
 
@@ -457,9 +462,30 @@ const internetProviders = [
   });
   updateConditionalFields();
 
-  function clearErrors(fieldset: HTMLFieldSetElement) {
-    fieldset.querySelectorAll(".field-error").forEach((el) => el.remove());
-    fieldset
+  const MAX_FLOORPLAN_SIZE = 8 * 1024 * 1024;
+  const floorplanInput =
+    form?.querySelector<HTMLInputElement>('input[name="floorplan"]');
+  floorplanInput?.addEventListener("change", () => {
+    const container = floorplanInput.closest<HTMLElement>(
+      '[data-field="floorplan"]',
+    );
+    if (!container) return;
+
+    clearErrors(container);
+    const file = floorplanInput.files?.[0];
+    if (file && file.size > MAX_FLOORPLAN_SIZE) {
+      showError(
+        container,
+        "That file is too large — please upload something under 8MB.",
+      );
+      floorplanInput.value = "";
+      delete formState.floorplan;
+    }
+  });
+
+  function clearErrors(container: HTMLElement) {
+    container.querySelectorAll(".field-error").forEach((el) => el.remove());
+    container
       .querySelectorAll("input, select, textarea")
       .forEach((el) => el.classList.remove("border-red-600"));
   }
