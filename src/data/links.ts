@@ -33,5 +33,6 @@ export const links: NavLink[] = [
     label: "Service Areas",
   },
   { href: "/quote-request", label: "Quote Request" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
