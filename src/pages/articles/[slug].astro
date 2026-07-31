@@ -1,8 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
 import Eyebrow from "../../components/Eyebrow.astro";
+import JsonLd from "../../components/JsonLd.astro";
 import Layout from "../../components/layouts/Layout.astro";
 import Section from "../../components/Section.astro";
+import { business } from "../../data/business";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -20,6 +22,30 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA", {
   month: "long",
   day: "numeric",
 });
+
+const articleUrl = new URL(`/articles/${article.id}`, Astro.site).toString();
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.pubDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: article.data.author,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: business.name,
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.png", Astro.site).toString(),
+    },
+  },
+  image: new URL("/og-image.png", Astro.site).toString(),
+  url: articleUrl,
+  mainEntityOfPage: articleUrl,
+};
 ---
 
 <Layout
@@ -27,6 +53,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA", {
   description={article.data.description}
   type="article"
 >
+  <Fragment slot="json-ld">
+    <JsonLd data={articleSchema} />
+  </Fragment>
+
   <Section border={false} class="pt-20">
     <Eyebrow> Articles </Eyebrow>
     <h1>{article.data.title}</h1>

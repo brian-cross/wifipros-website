@@ -3,15 +3,33 @@ import Accordion from "../components/Accordion.astro";
 import AccordionItem from "../components/AccordionItem.astro";
 import Bullet from "../components/Bullet.astro";
 import Eyebrow from "../components/Eyebrow.astro";
+import JsonLd from "../components/JsonLd.astro";
 import Layout from "../components/layouts/Layout.astro";
 import Section from "../components/Section.astro";
 import { faqs } from "../data/faq";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <Layout
   title="Frequently Asked Questions | Wi-Fi Pros"
   description="Answers to common questions about Wi-Fi Pros' networking, cabling, camera, and connectivity services in the greater Edmonton area."
 >
+  <Fragment slot="json-ld">
+    <JsonLd data={faqSchema} />
+  </Fragment>
+
   <Section border={false} class="pt-20">
     <Eyebrow> Questions & Answers </Eyebrow>
     <h1>Frequently Asked Questions</h1>
