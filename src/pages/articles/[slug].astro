@@ -22,7 +22,11 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA", {
 });
 ---
 
-<Layout title={`${article.data.title} | Wi-Fi Pros`} description={article.data.description}>
+<Layout
+  title={`${article.data.title} | Wi-Fi Pros`}
+  description={article.data.description}
+  type="article"
+>
   <Section border={false} class="pt-20">
     <Eyebrow> Articles </Eyebrow>
     <h1>{article.data.title}</h1>
