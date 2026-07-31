@@ -28,6 +28,74 @@
   @apply text-paper;
 }
 
+@layer components {
+  .article-body {
+    @apply text-slate leading-relaxed;
+
+    p {
+      @apply mt-4 max-w-2xl;
+    }
+
+    h2 {
+      @apply mt-10;
+    }
+
+    h3 {
+      @apply font-display text-xl font-bold text-ink mt-8 max-w-2xl;
+    }
+
+    h4 {
+      @apply font-display text-lg font-semibold text-ink mt-6 max-w-2xl;
+    }
+
+    ul,
+    ol {
+      @apply mt-4 max-w-2xl space-y-2 pl-6;
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    li > p {
+      @apply mt-0;
+    }
+
+    blockquote {
+      @apply mt-6 max-w-2xl border-l-2 border-connect pl-5 italic text-ink;
+    }
+
+    strong {
+      @apply font-semibold text-ink;
+    }
+
+    a {
+      @apply text-signal hover:underline;
+    }
+
+    table {
+      @apply mt-6 w-full max-w-2xl border-collapse text-sm;
+    }
+
+    th,
+    td {
+      @apply border border-line px-3 py-2 text-left;
+    }
+
+    th {
+      @apply bg-ink/5 font-display font-semibold text-ink;
+    }
+
+    hr {
+      @apply mt-8 border-line;
+    }
+  }
+}
+
 body {
   background: var(--color-paper);
   color: var(--color-ink);
