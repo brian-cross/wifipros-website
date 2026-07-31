@@ -1,0 +1,26 @@
+---
+const { id, class: className = "" } = Astro.props as {
+  id?: string;
+  class?: string;
+};
+---
+
+<div class:list={["accordion-root grid gap-3.5", className]} id={id}>
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".accordion-root").forEach((accordion) => {
+    accordion.addEventListener("click", (e) => {
+      const button = (e.target as HTMLElement).closest<HTMLElement>(
+        ".accordion-card-head",
+      );
+      if (!button || !accordion.contains(button)) return;
+
+      const card = button.closest<HTMLElement>(".accordion-card");
+      const isOpen = card?.getAttribute("data-open") === "true";
+      card?.setAttribute("data-open", String(!isOpen));
+      button.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+</script>

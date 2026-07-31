@@ -1,0 +1,33 @@
+---
+const { open = false } = Astro.props as { open?: boolean };
+---
+
+<div
+  class="accordion-card group border border-line rounded-xl overflow-hidden bg-paper data-[open=true]:border-signal/35"
+  data-open={open ? "true" : "false"}
+>
+  <button
+    class="accordion-card-head w-full flex items-center gap-4 px-5 py-5 text-left cursor-pointer focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-signal"
+    aria-expanded={open ? "true" : "false"}
+  >
+    <slot name="head" />
+    <svg
+      class="h-4.5 w-4.5 text-slate shrink-0 transition-transform duration-250 ease-out motion-reduce:transition-none group-data-[open=true]:rotate-180 group-data-[open=true]:text-signal"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        d="M5 7.5L10 12.5L15 7.5"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+  <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 motion-reduce:transition-none group-data-[open=true]:grid-rows-[1fr]">
+    <div class="overflow-hidden">
+      <slot />
+    </div>
+  </div>
+</div>
