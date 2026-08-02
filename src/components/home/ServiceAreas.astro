@@ -17,7 +17,7 @@ import { cities } from "../../data/cities";
   </p>
   <ul class="mt-6 flex flex-wrap gap-x-2 gap-y-3 font-mono text-sm">
     {
-      cities.map((city, i) => (
+      cities.map((city) => (
         <li class="flex items-center">
           <a
             href={`/service-areas/${city.slug}`}
@@ -25,16 +25,23 @@ import { cities } from "../../data/cities";
           >
             {city.name}
           </a>
-          {i < cities.length - 1 && <span class="text-line ml-2">·</span>}
+          <span class="text-line ml-2">·</span>
         </li>
       ))
     }
+    <li class="flex items-center">
+      <a
+        href="/service-areas/rural-acreage"
+        class="text-signal hover:underline"
+      >
+        Rural &amp; Acreage Properties
+      </a>
+    </li>
   </ul>
   <a
-    href="/services/rural-acreage-internet-wifi-edmonton-area"
+    href="/contact"
     class="mt-6 inline-block font-medium text-signal hover:underline"
   >
-    Don't see your area? Reach out — we cover rural and acreage properties
-    too.
+    Don't see your area? Reach out and we'll let you know if we can help.
   </a>
 </Section>

@@ -3,8 +3,11 @@ import Bullet from "./Bullet.astro";
 import { links } from "../data/links";
 
 const current = Astro.url.pathname;
-const isActiveLink = (href: string) =>
-  current === href || current.startsWith(`${href}/`);
+const isActiveLink = (href?: string) =>
+  !!href && (current === href || current.startsWith(`${href}/`));
+const isActiveGroup = (link: (typeof links)[number]) =>
+  isActiveLink(link.href) ||
+  (link.submenu?.some((item) => isActiveLink(item.href)) ?? false);
 const submenuId = (label: string) =>
   `mobile-submenu-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 ---
@@ -17,29 +20,47 @@ const submenuId = (label: string) =>
     {
       links.map((link) => (
         <li class="relative group">
-          <a
-            href={link.href}
-            class:list={[
-              "relative py-2 text-slate transition-colors hover:text-ink",
-              { "text-ink": isActiveLink(link.href) },
-            ]}
-          >
-            {isActiveLink(link.href) && (
-              <Bullet
-                class="absolute -left-3.5 top-1/2 -translate-y-1/2"
-                pulse
-              />
-            )}
-            {link.label}
-          </a>
+          {link.href ? (
+            <a
+              href={link.href}
+              class:list={[
+                "relative inline-block py-2 text-slate uppercase transition-colors hover:text-ink",
+                { "text-ink": isActiveGroup(link) },
+              ]}
+            >
+              {isActiveGroup(link) && (
+                <Bullet
+                  class="absolute -left-3.5 top-1/2 -translate-y-1/2"
+                  pulse
+                />
+              )}
+              {link.label}
+            </a>
+          ) : (
+            <button
+              type="button"
+              class:list={[
+                "relative py-2 text-slate uppercase transition-colors hover:text-ink cursor-pointer",
+                { "text-ink": isActiveGroup(link) },
+              ]}
+            >
+              {isActiveGroup(link) && (
+                <Bullet
+                  class="absolute -left-3.5 top-1/2 -translate-y-1/2"
+                  pulse
+                />
+              )}
+              {link.label}
+            </button>
+          )}
           {link.submenu && (
-            <ul class="absolute right-0 top-full mt-2 hidden min-w-70 rounded-lg border border-line bg-paper p-2 shadow-lg group-hover:block group-focus-within:block">
+            <ul class="absolute right-0 top-full hidden min-w-70 rounded-lg border border-line bg-paper p-2 shadow-lg group-hover:block group-focus-within:block">
               {link.submenu.map((item) => (
                 <li>
                   <a
                     href={item.href}
                     class:list={[
-                      "block rounded px-3 py-2 text-[11px] tracking-wide text-slate transition-colors hover:bg-ink/5 hover:text-ink",
+                      "block rounded px-3 py-2 text-[11px] tracking-wide text-slate uppercase transition-colors hover:bg-ink/5 hover:text-ink",
                       { "text-ink": current === item.href },
                     ]}
                   >
@@ -86,7 +107,7 @@ const submenuId = (label: string) =>
                   aria-controls={submenuId(link.label)}
                 >
                   <span class="flex items-center gap-2">
-                    {isActiveLink(link.href) && <Bullet pulse />}
+                    {isActiveGroup(link) && <Bullet pulse />}
                     {link.label}
                   </span>
                   <span class="text-[10px]">+</span>
@@ -100,7 +121,7 @@ const submenuId = (label: string) =>
                       <a
                         href={item.href}
                         class:list={[
-                          "block rounded px-3 py-2 text-[11px] tracking-wide text-slate hover:text-ink",
+                          "block rounded px-3 py-2 text-[11px] tracking-wide text-slate uppercase hover:text-ink",
                           { "text-ink": current === item.href },
                         ]}
                       >
@@ -114,7 +135,7 @@ const submenuId = (label: string) =>
               <a
                 href={link.href}
                 class:list={[
-                  "flex items-center gap-2 px-4 py-3 text-slate hover:bg-ink/5 hover:text-ink",
+                  "flex items-center gap-2 px-4 py-3 text-slate uppercase hover:bg-ink/5 hover:text-ink",
                   { "text-ink": isActiveLink(link.href) },
                 ]}
               >

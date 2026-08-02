@@ -1,5 +1,5 @@
 export interface NavLink {
-  href: string;
+  href?: string;
   label: string;
   submenu?: NavLink[];
 }
@@ -34,8 +34,7 @@ export const links: NavLink[] = [
   },
   { href: "/quote-request", label: "Quote Request" },
   {
-    href: "/articles",
-    label: "About",
+    label: "Info",
     submenu: [
       { href: "/articles", label: "Articles" },
       { href: "/faq", label: "FAQ" },
