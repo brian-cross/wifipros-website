@@ -62,9 +62,24 @@ const footerLinks = links.flatMap((link) =>
   </div>
 
   <div class="border-t border-paper/10 py-4">
-    <p class="text-center text-xs text-paper/50 font-mono">
-      © {new Date().getFullYear()}{" "}
-      {business.legalName} All rights reserved.
+    <p
+      class="flex flex-col items-center justify-center gap-2 text-center text-xs text-paper/50 font-mono sm:flex-row sm:gap-4"
+    >
+      <span>
+        © {new Date().getFullYear()}{" "}
+        {business.legalName} All rights reserved.
+      </span>
+      <span class="flex items-center gap-4">
+        <a href="/privacy-policy" class="hover:text-[#3b82f6] transition-colors">
+          Privacy Policy
+        </a>
+        <a
+          href="/terms-and-conditions"
+          class="hover:text-[#3b82f6] transition-colors"
+        >
+          Terms &amp; Conditions
+        </a>
+      </span>
     </p>
   </div>
 </footer>

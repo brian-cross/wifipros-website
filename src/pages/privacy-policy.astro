@@ -1,0 +1,145 @@
+---
+// Template drafted for Wi-Fi Pros; have a lawyer review before relying on it.
+import Layout from "../components/layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import { business } from "../data/business";
+
+const lastUpdated = "August 1, 2026";
+---
+
+<Layout
+  title="Privacy Policy | Wi-Fi Pros"
+  description="How Wi-Fi Pros Network Consulting collects, uses, and protects the information you share through our contact and quote request forms."
+>
+  <Section border={false} class="pt-20">
+    <h1>Privacy Policy</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      Last updated: {lastUpdated}
+    </p>
+  </Section>
+
+  <Section>
+    <div class="article-body max-w-2xl">
+      <p>
+        {business.legalName} ("we," "us," or "our") operates the wifipros.ca website.
+        This policy explains what information we collect when you visit our site or
+        use our contact and quote request forms, how we use it, and the choices you
+        have.
+      </p>
+
+      <h2>Information We Collect</h2>
+      <p>
+        We only collect information that you choose to give us. We do not use
+        cookies, analytics, or any tracking technology on this site, and we do
+        not passively collect browsing data.
+      </p>
+      <p>When you use our <strong>contact form</strong>, we collect:</p>
+      <ul>
+        <li>Your name</li>
+        <li>Email address</li>
+        <li>Phone number (optional)</li>
+        <li>The message you send us</li>
+      </ul>
+      <p>When you use our <strong>quote request form</strong>, we collect:</p>
+      <ul>
+        <li>Whether the request is residential or business</li>
+        <li>
+          The services you're interested in (Wi-Fi/network, cameras, door
+          access, audio, or network storage)
+        </li>
+        <li>
+          Property details — existing wiring, internet provider, outbuildings,
+          and approximate building size
+        </li>
+        <li>Your name, email address, and phone number (optional)</li>
+        <li>Your city and postal code</li>
+        <li>Your preferred timeline</li>
+        <li>A floorplan file, if you choose to upload one (optional)</li>
+        <li>Any other details you provide</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use the information you provide to:</p>
+      <ul>
+        <li>Respond to your inquiry or message</li>
+        <li>Prepare and follow up on quote requests</li>
+        <li>Schedule site visits, calls, or consultations</li>
+        <li>Plan and deliver the services you request from us</li>
+      </ul>
+      <p>
+        We do not use your information for advertising, and we do not sell or
+        rent it to third parties.
+      </p>
+
+      <h2>How Your Information Is Handled</h2>
+      <p>
+        Our contact and quote request forms are processed by{" "}
+        <a
+          href="https://www.netlify.com/privacy/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Netlify
+        </a>, the company that hosts this website, and delivered to us by email.
+        We don't operate our own database or CRM for form submissions beyond
+        what Netlify stores on our behalf.
+      </p>
+      <p>
+        This site loads fonts from Google Fonts. Loading a font makes a request
+        to Google's servers, which may log your IP address as part of normal web
+        delivery — we don't control this and don't receive any information from
+        it ourselves.
+      </p>
+      <p>
+        We do not currently use Google Analytics or any other analytics or
+        advertising tool. If that changes in the future, we'll update this
+        policy before doing so.
+      </p>
+
+      <h2>Data Retention</h2>
+      <p>
+        We keep form submissions for as long as reasonably necessary to respond
+        to your inquiry, deliver any services you request, and meet our own
+        recordkeeping and legal obligations. You can ask us to delete your
+        information at any time — see "Your Rights" below.
+      </p>
+
+      <h2>Your Rights</h2>
+      <p>
+        Under Alberta's Personal Information Protection Act and Canada's federal
+        privacy law (PIPEDA), you have the right to ask what personal
+        information we hold about you, request a correction, or request that we
+        delete it. To do so, contact us using the details below.
+      </p>
+
+      <h2>Data Security</h2>
+      <p>
+        We take reasonable steps to protect the information you share with us,
+        but no method of electronic storage or transmission is completely
+        secure, and we can't guarantee absolute security.
+      </p>
+
+      <h2>Children's Privacy</h2>
+      <p>
+        This website is intended for adults seeking home or business networking
+        services. We do not knowingly collect information from children.
+      </p>
+
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this policy from time to time. Changes will be posted on
+        this page with an updated "Last updated" date.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you have questions about this policy or want to exercise any of the
+        rights described above, contact us at{" "}
+        <a href={`mailto:${business.email}`}>{business.email}</a> or{" "}
+        <a href={`tel:${business.phone.replace(/[^\d+]/g, "")}`}>
+          {business.phone}
+        </a>.
+      </p>
+    </div>
+  </Section>
+</Layout>
