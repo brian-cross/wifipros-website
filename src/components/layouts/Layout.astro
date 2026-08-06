@@ -16,7 +16,9 @@ const { title, description, image = "/og-image.png", type = "website" } =
   Astro.props;
 
 const normalizedPath =
-  Astro.url.pathname.replace(/\/$/, "") || "/";
+  Astro.url.pathname === "/index.html"
+    ? "/"
+    : Astro.url.pathname.replace(/\.html$/, "");
 const canonicalUrl = new URL(normalizedPath, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
 
