@@ -30,11 +30,6 @@ export const faqs: Faq[] = [
       "We use UniFi hardware by Ubiquiti. UniFi has a wide range of hardware available which allows for great flexibility in the network design. It's also possible to upgrade or swap out individual components easily. One big advantage of UniFi over other vendors is you're not stuck with a cloud subscription fee to enable certain features. The hardware is yours and can be configured however it's needed.",
   },
   {
-    question: "Do you mark up your hardware?",
-    answer:
-      "We don't mark up the hardware directly, but we will charge a 10% fee to cover the time associated with ordering and receiving the Ubiquiti equipment.",
-  },
-  {
     question: "Can you activate the Ethernet ports in my new house?",
     answer:
       "Absolutely! We use industry best practices when terminating Ethernet wiring to guarantee trouble free network connections for years.",
