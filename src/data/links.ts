@@ -10,6 +10,7 @@ export const links: NavLink[] = [
     href: "/services",
     label: "Services",
     submenu: [
+      { href: "/services", label: "All Services" },
       {
         href: "/services/ubiquiti-network-design-installation",
         label: "Network Design & Installation",
