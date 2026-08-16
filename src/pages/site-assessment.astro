@@ -25,16 +25,15 @@ const optionCardClass =
     <h1>Book a Site Assessment</h1>
     <p class="mt-5 text-slate max-w-xl text-lg">
       We’ll come out, walk the property, and put together a plan tailored to
-      your space. A $150 + GST visit fee applies and is credited toward any
-      work you book with us afterward.
+      your space. A site assessment fee of $150 + GST applies.
     </p>
   </Section>
 
   <Section>
     <h2>Request Your Assessment</h2>
     <p class="mt-3 max-w-2xl text-slate leading-relaxed">
-      Fill out the form below and we’ll follow up to confirm a time, or reach
-      us directly by phone, text or email.
+      Fill out the form below and we’ll follow up to confirm a time, or reach us
+      directly by phone, text or email.
     </p>
     <div class="mt-10 grid gap-16 md:grid-cols-[1.5fr_1fr]">
       <form
@@ -175,7 +174,9 @@ const optionCardClass =
           ></textarea>
         </div>
 
-        <label class="flex items-start gap-3 text-sm text-slate leading-relaxed">
+        <label
+          class="flex items-start gap-3 text-sm text-slate leading-relaxed"
+        >
           <input
             type="checkbox"
             name="fee_acknowledged"
@@ -183,8 +184,7 @@ const optionCardClass =
             required
             class="accent-signal mt-1"
           />
-          I understand a $150 + GST fee applies for this visit, credited
-          toward any work I book with Wi-Fi Pros afterward.
+          I understand a fee of $150 + GST applies for this visit.
         </label>
 
         <button
@@ -253,9 +253,7 @@ const optionCardClass =
 <script>
   import { createFormStatusModal } from "../scripts/formStatusModal";
 
-  const form = document.querySelector<HTMLFormElement>(
-    "#site-assessment-form",
-  );
+  const form = document.querySelector<HTMLFormElement>("#site-assessment-form");
   const submitButton = document.getElementById(
     "site-assessment-submit",
   ) as HTMLButtonElement | null;
