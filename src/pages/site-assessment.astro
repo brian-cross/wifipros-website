@@ -1,0 +1,300 @@
+---
+import Eyebrow from "../components/Eyebrow.astro";
+import FormStatusModal from "../components/FormStatusModal.astro";
+import Layout from "../components/layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import { business } from "../data/business";
+
+const phoneDigits = business.phone.replace(/[^\d+]/g, "");
+const phoneHref = `tel:${phoneDigits}`;
+const smsHref = `sms:${phoneDigits}`;
+
+const inputClass =
+  "w-full min-w-0 rounded-lg border border-line bg-paper px-4 py-3.5 text-ink placeholder:text-slate/60 focus:outline-none focus:border-signal transition-colors";
+const labelClass = "block text-sm font-medium text-ink mb-2";
+const optionCardClass =
+  "flex items-center gap-3 rounded-lg border border-line bg-paper px-4 py-3.5 has-checked:border-signal has-checked:bg-signal/5 transition-colors cursor-pointer";
+---
+
+<Layout
+  title="Book a Site Assessment | Wi-Fi Pros"
+  description="Book an on-site assessment with Wi-Fi Pros Network Consulting. A $150 + GST visit fee applies and is credited toward any work you book with us."
+>
+  <Section border={false} class="pt-20">
+    <Eyebrow> Site Assessment </Eyebrow>
+    <h1>Book a Site Assessment</h1>
+    <p class="mt-5 text-slate max-w-xl text-lg">
+      We’ll come out, walk the property, and put together a plan tailored to
+      your space. A $150 + GST visit fee applies and is credited toward any
+      work you book with us afterward.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Request Your Assessment</h2>
+    <p class="mt-3 max-w-2xl text-slate leading-relaxed">
+      Fill out the form below and we’ll follow up to confirm a time, or reach
+      us directly by phone, text or email.
+    </p>
+    <div class="mt-10 grid gap-16 md:grid-cols-[1.5fr_1fr]">
+      <form
+        id="site-assessment-form"
+        name="site-assessment"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-7"
+      >
+        <input type="hidden" name="form-name" value="site-assessment" />
+        <p class="hidden">
+          <label>
+            Don’t fill this out if you’re human: <input name="bot-field" />
+          </label>
+        </p>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div>
+            <label for="name" class={labelClass}>Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              class={inputClass}
+            />
+          </div>
+          <div>
+            <label for="email" class={labelClass}>Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="phone" class={labelClass}>Phone (optional)</label>
+          <input type="tel" name="phone" id="phone" class={inputClass} />
+        </div>
+
+        <fieldset>
+          <legend class={labelClass}>Property type</legend>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class={optionCardClass}>
+              <input
+                type="radio"
+                name="property_type"
+                value="residential"
+                required
+                class="accent-signal"
+              />
+              Residential
+            </label>
+            <label class={optionCardClass}>
+              <input
+                type="radio"
+                name="property_type"
+                value="business"
+                required
+                class="accent-signal"
+              />
+              Business
+            </label>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="street_address" class={labelClass}>
+            Street address
+          </label>
+          <input
+            type="text"
+            name="street_address"
+            id="street_address"
+            required
+            class={inputClass}
+          />
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div>
+            <label for="postal_code" class={labelClass}>Postal code</label>
+            <input
+              type="text"
+              name="postal_code"
+              id="postal_code"
+              required
+              class={inputClass}
+            />
+          </div>
+        </div>
+
+        <div class="grid gap-7 sm:grid-cols-2">
+          <div class="min-w-0">
+            <label for="preferred_date" class={labelClass}>
+              Preferred date
+            </label>
+            <input
+              type="date"
+              name="preferred_date"
+              id="preferred_date"
+              required
+              class={`${inputClass} block appearance-none min-w-full`}
+            />
+          </div>
+          <div class="min-w-0">
+            <label for="preferred_time" class={labelClass}>
+              Preferred time
+            </label>
+            <select
+              name="preferred_time"
+              id="preferred_time"
+              required
+              class={inputClass}
+            >
+              <option value="" selected disabled>Select an option</option>
+              <option value="morning">Morning (8am–12pm)</option>
+              <option value="afternoon">Afternoon (12pm–4pm)</option>
+              <option value="evening">Evening (4pm–6pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class={labelClass}>Message</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="6"
+            required
+            class={inputClass}
+            placeholder="Tell us about your property and what you're looking for."
+          ></textarea>
+        </div>
+
+        <label class="flex items-start gap-3 text-sm text-slate leading-relaxed">
+          <input
+            type="checkbox"
+            name="fee_acknowledged"
+            value="acknowledged"
+            required
+            class="accent-signal mt-1"
+          />
+          I understand a $150 + GST fee applies for this visit, credited
+          toward any work I book with Wi-Fi Pros afterward.
+        </label>
+
+        <button
+          type="submit"
+          id="site-assessment-submit"
+          class="bg-signal text-paper font-medium px-6 py-3 rounded-lg hover:bg-signal/90 transition-colors"
+        >
+          Book Assessment
+        </button>
+      </form>
+
+      <div>
+        <p class="font-mono text-xs uppercase tracking-wide text-slate mb-4">
+          Direct Contact
+        </p>
+        <ul class="space-y-4 text-ink">
+          <li>
+            <a
+              href={phoneHref}
+              class="font-medium hover:text-signal transition-colors"
+            >
+              {business.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={smsHref}
+              class="font-medium hover:text-signal transition-colors"
+            >
+              Send us a text
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${business.email}`}
+              class="font-medium hover:text-signal transition-colors"
+            >
+              {business.email}
+            </a>
+          </li>
+        </ul>
+
+        <p
+          class="font-mono text-xs uppercase tracking-wide text-slate mt-10 mb-4"
+        >
+          Hours
+        </p>
+        <ul class="space-y-2 text-slate">
+          <li>Mon–Fri: {business.hours.weekdays}</li>
+          <li>Sat–Sun: {business.hours.weekends}</li>
+          <li>Holidays: {business.hours.holidays}</li>
+        </ul>
+      </div>
+    </div>
+
+    <FormStatusModal
+      idPrefix="site-assessment"
+      loadingText="Submitting your request…"
+      successHeading="Thanks — Your Request Is In!"
+      successMessage="We’ve received your site assessment request and will follow up to confirm a time."
+      errorMessage="We couldn’t submit your request. Please check your connection and try again."
+    />
+  </Section>
+</Layout>
+
+<script>
+  import { createFormStatusModal } from "../scripts/formStatusModal";
+
+  const form = document.querySelector<HTMLFormElement>(
+    "#site-assessment-form",
+  );
+  const submitButton = document.getElementById(
+    "site-assessment-submit",
+  ) as HTMLButtonElement | null;
+
+  const modal = createFormStatusModal("site-assessment", {
+    onRetry: () => submitSiteAssessmentForm(),
+    onClose: () => {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Book Assessment";
+      }
+    },
+  });
+
+  async function submitSiteAssessmentForm() {
+    if (!form) return;
+
+    modal.open();
+    modal.setState("loading");
+    if (submitButton) submitButton.disabled = true;
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        body: data,
+      });
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+
+      modal.setState("success");
+    } catch (err) {
+      console.error("Site assessment submission failed:", err);
+      modal.setState("error");
+    }
+  }
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitSiteAssessmentForm();
+  });
+</script>

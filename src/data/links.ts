@@ -33,7 +33,6 @@ export const links: NavLink[] = [
     href: "/service-areas",
     label: "Service Areas",
   },
-  { href: "/quote-request", label: "Quote Request" },
   {
     label: "Info",
     submenu: [
@@ -41,5 +40,12 @@ export const links: NavLink[] = [
       { href: "/faq", label: "FAQ" },
     ],
   },
-  { href: "/contact", label: "Contact" },
+  {
+    label: "Contact",
+    submenu: [
+      { href: "/contact", label: "Contact Us" },
+      { href: "/quote-request", label: "Quote Request" },
+      { href: "/site-assessment", label: "Book a Site Assessment" },
+    ],
+  },
 ];
