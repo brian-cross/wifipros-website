@@ -24,8 +24,9 @@ const optionCardClass =
     <Eyebrow> Site Assessment </Eyebrow>
     <h1>Book a Site Assessment</h1>
     <p class="mt-5 text-slate max-w-xl text-lg">
-      We’ll come out, walk the property, and put together a plan tailored to
-      your space. A site assessment fee of $150 + GST applies.
+      We’ll come out, walk the property, survey the existing wireless coverage,
+      and put together a plan tailored to your space. A site assessment fee of
+      $150 + GST applies.
     </p>
   </Section>
 
@@ -40,6 +41,7 @@ const optionCardClass =
         id="site-assessment-form"
         name="site-assessment"
         method="POST"
+        enctype="multipart/form-data"
         data-netlify="true"
         netlify-honeypot="bot-field"
         class="space-y-7"
@@ -162,6 +164,24 @@ const optionCardClass =
           </div>
         </div>
 
+        <div data-field="photos">
+          <label for="photos" class={labelClass}>
+            Photos or floorplan (optional)
+          </label>
+          <input
+            type="file"
+            name="photos"
+            id="photos"
+            accept="image/*,.pdf"
+            multiple
+            class={`${inputClass} file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:font-medium file:text-ink`}
+          />
+          <p class="mt-2 text-sm text-slate leading-relaxed">
+            Photos of your space or a floorplan will help us prepare before the
+            visit. Images or PDFs, up to 8MB each.
+          </p>
+        </div>
+
         <div>
           <label for="message" class={labelClass}>Message</label>
           <textarea
@@ -267,6 +287,45 @@ const optionCardClass =
       }
     },
   });
+
+  const MAX_PHOTO_SIZE = 8 * 1024 * 1024;
+  const photosInput = form?.querySelector<HTMLInputElement>(
+    'input[name="photos"]',
+  );
+  photosInput?.addEventListener("change", () => {
+    const container = photosInput.closest<HTMLElement>('[data-field="photos"]');
+    if (!container) return;
+
+    clearErrors(container);
+    const files = photosInput.files ? Array.from(photosInput.files) : [];
+    if (files.some((file) => file.size > MAX_PHOTO_SIZE)) {
+      showError(
+        container,
+        "One or more files are too large — please upload files under 8MB each.",
+      );
+      photosInput.value = "";
+    }
+  });
+
+  function clearErrors(container: HTMLElement) {
+    container.querySelectorAll(".field-error").forEach((el) => el.remove());
+    container
+      .querySelectorAll("input, select, textarea")
+      .forEach((el) => el.classList.remove("border-red-600"));
+  }
+
+  function showError(container: HTMLElement, message: string) {
+    let error = container.querySelector<HTMLElement>(":scope > .field-error");
+    if (!error) {
+      error = document.createElement("p");
+      error.className = "field-error mt-2 text-sm text-red-600";
+      container.appendChild(error);
+    }
+    error.textContent = message;
+    container
+      .querySelectorAll("input, select, textarea")
+      .forEach((el) => el.classList.add("border-red-600"));
+  }
 
   async function submitSiteAssessmentForm() {
     if (!form) return;
