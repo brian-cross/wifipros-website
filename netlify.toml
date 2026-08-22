@@ -8,13 +8,13 @@
   status = 301
 
 [[redirects]]
-  from = "/js/script.js"
+  from = "/js/site-metrics.js"
   to = "https://plausible.io/js/pa-Cr0W9evv4_OrXNX6b_4Zk.js"
   status = 200
   force = true
 
 [[redirects]]
-  from = "/api/event"
+  from = "/api/site-metrics"
   to = "https://plausible.io/api/event"
   status = 200
   force = true
