@@ -117,6 +117,13 @@ const localBusinessSchema = {
 
     <JsonLd data={localBusinessSchema} />
     <slot name="json-ld" />
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script is:inline async src="https://plausible.io/js/pa-Cr0W9evv4_OrXNX6b_4Zk.js"></script>
+    <script is:inline>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
   </head>
   <body class="font-body">
     <a
