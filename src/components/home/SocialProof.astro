@@ -1,0 +1,31 @@
+---
+import Section from "../Section.astro";
+---
+
+<Section border={false} class="py-8">
+  <a
+    href="https://maps.app.goo.gl/KJh7XPnBUhHyw9CX9"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex flex-wrap items-center justify-center gap-3 text-center sm:justify-start sm:text-left"
+  >
+    <span class="flex gap-0.5 text-amber-400">
+      {
+        Array.from({ length: 5 }).map(() => (
+          <svg
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="h-5 w-5"
+            aria-hidden="true"
+          >
+            <path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7z" />
+          </svg>
+        ))
+      }
+    </span>
+    <span class="text-sm text-slate">
+      <span class="font-semibold text-ink">5-star rated</span> on Google — see
+      what Edmonton-area clients are saying
+    </span>
+  </a>
+</Section>
