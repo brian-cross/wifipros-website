@@ -125,6 +125,19 @@ const localBusinessSchema = {
       data-domain="wifipros.ca"
       data-api="/api/site-metrics"
       src="/js/site-metrics.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18456110292"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18456110292');
+    </script>
   </head>
   <body class="font-body">
     <a
