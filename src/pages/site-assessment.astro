@@ -271,6 +271,12 @@ const optionCardClass =
 <script>
   import { createFormStatusModal } from "../scripts/formStatusModal";
 
+  declare global {
+    interface Window {
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
   const form = document.querySelector<HTMLFormElement>("#site-assessment-form");
   const submitButton = document.getElementById(
     "site-assessment-submit",
@@ -342,6 +348,9 @@ const optionCardClass =
       if (!response.ok) throw new Error(`Request failed: ${response.status}`);
 
       modal.setState("success");
+      window.gtag?.("event", "conversion", {
+        send_to: "AW-18456110292/-Gl9CMTVzIAdENTJx-BE",
+      });
     } catch (err) {
       console.error("Site assessment submission failed:", err);
       modal.setState("error");
