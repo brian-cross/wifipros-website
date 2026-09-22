@@ -412,6 +412,12 @@ const internetProviders = [
 <script>
   import { createFormStatusModal } from "../scripts/formStatusModal";
 
+  declare global {
+    interface Window {
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
   const form = document.querySelector<HTMLFormElement>("#quote-form");
   const steps = Array.from(
     form?.querySelectorAll<HTMLFieldSetElement>("fieldset[data-step]") ?? [],
@@ -647,6 +653,11 @@ const internetProviders = [
         announcer.textContent =
           "Your quote request was submitted successfully.";
       }
+      window.gtag?.("event", "conversion", {
+        send_to: "AW-18456110292/8dh_CMaWoPocENTJx-BE",
+        value: 1.0,
+        currency: "CAD",
+      });
     } catch (err) {
       console.error("Quote request submission failed:", err);
       modal.setState("error");
