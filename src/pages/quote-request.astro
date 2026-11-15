@@ -88,6 +88,17 @@ const internetProviders = [
           </div>
         </fieldset>
 
+        <div data-field="business_name" data-conditional="business" hidden>
+          <label for="business_name" class={labelClass}>Business name</label>
+          <input
+            type="text"
+            name="business_name"
+            id="business_name"
+            required
+            class={inputClass}
+          />
+        </div>
+
         <fieldset data-field="services" data-required="true">
           <legend class={labelClass}>
             Products and services (select all that apply)
@@ -181,7 +192,7 @@ const internetProviders = [
 
           <div
             data-field="building_size_sqft"
-            data-conditional="business-size"
+            data-conditional="business"
             hidden
           >
             <label for="building_size_sqft" class={labelClass}>
@@ -371,6 +382,7 @@ const internetProviders = [
     <input name="bot-field" />
     <input type="radio" name="service_type" value="residential" />
     <input type="radio" name="service_type" value="business" />
+    <input type="text" name="business_name" />
     <input type="checkbox" name="services" value="network_wifi" />
     <input type="checkbox" name="services" value="camera_surveillance" />
     <input type="checkbox" name="services" value="door_access" />
@@ -454,12 +466,12 @@ const internetProviders = [
     const selected = form?.querySelector<HTMLInputElement>(
       'input[name="service_type"]:checked',
     );
-    const sizeField = form?.querySelector<HTMLElement>(
-      '[data-conditional="business-size"]',
+    const businessFields = form?.querySelectorAll<HTMLElement>(
+      '[data-conditional="business"]',
     );
-    if (sizeField) {
-      sizeField.hidden = selected?.value !== "business";
-    }
+    businessFields?.forEach((field) => {
+      field.hidden = selected?.value !== "business";
+    });
   }
 
   form?.addEventListener("input", updateState);
