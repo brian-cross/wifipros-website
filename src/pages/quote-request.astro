@@ -94,7 +94,6 @@ const internetProviders = [
             type="text"
             name="business_name"
             id="business_name"
-            required
             class={inputClass}
           />
         </div>
@@ -480,12 +479,16 @@ const internetProviders = [
     const selected = form?.querySelector<HTMLInputElement>(
       'input[name="service_type"]:checked',
     );
+    const isBusiness = selected?.value === "business";
     const businessFields = form?.querySelectorAll<HTMLElement>(
       '[data-conditional="business"]',
     );
     businessFields?.forEach((field) => {
-      field.hidden = selected?.value !== "business";
+      field.hidden = !isBusiness;
     });
+    const businessNameInput =
+      form?.querySelector<HTMLInputElement>("#business_name");
+    if (businessNameInput) businessNameInput.required = isBusiness;
   }
 
   form?.addEventListener("input", updateState);
