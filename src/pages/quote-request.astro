@@ -321,7 +321,13 @@ const internetProviders = [
           <label for="budget" class={labelClass}>
             Approximate budget? (optional)
           </label>
-          <input type="text" name="budget" id="budget" class={inputClass} />
+          <input
+            type="text"
+            inputmode="numeric"
+            name="budget"
+            id="budget"
+            class={inputClass}
+          />
         </div>
 
         <div data-field="floorplan">
