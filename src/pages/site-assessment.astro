@@ -128,6 +128,7 @@ const optionCardClass =
               name="postal_code"
               id="postal_code"
               required
+              pattern="[A-Za-z]\d[A-Za-z][ \-]?\d[A-Za-z]\d"
               class={inputClass}
             />
           </div>
@@ -290,6 +291,12 @@ const optionCardClass =
         submitButton.textContent = "Book Assessment";
       }
     },
+  });
+
+  const postalCodeInput =
+    form?.querySelector<HTMLInputElement>('input[name="postal_code"]');
+  postalCodeInput?.addEventListener("input", () => {
+    postalCodeInput.value = postalCodeInput.value.toUpperCase();
   });
 
   const MAX_PHOTO_SIZE = 8 * 1024 * 1024;

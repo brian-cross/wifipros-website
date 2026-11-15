@@ -272,6 +272,7 @@ const internetProviders = [
               name="postal_code"
               id="postal_code"
               required
+              pattern="[A-Za-z]\d[A-Za-z][ \-]?\d[A-Za-z]\d"
               class={inputClass}
             />
           </div>
@@ -467,6 +468,12 @@ const internetProviders = [
     updateConditionalFields();
   });
   updateConditionalFields();
+
+  const postalCodeInput =
+    form?.querySelector<HTMLInputElement>('input[name="postal_code"]');
+  postalCodeInput?.addEventListener("input", () => {
+    postalCodeInput.value = postalCodeInput.value.toUpperCase();
+  });
 
   const MAX_FLOORPLAN_SIZE = 8 * 1024 * 1024;
   const floorplanInput =
