@@ -317,6 +317,13 @@ const internetProviders = [
           </select>
         </div>
 
+        <div>
+          <label for="budget" class={labelClass}>
+            Approximate budget? (optional)
+          </label>
+          <input type="text" name="budget" id="budget" class={inputClass} />
+        </div>
+
         <div data-field="floorplan">
           <label for="floorplan" class={labelClass}>
             Floorplan upload (optional)
@@ -417,6 +424,7 @@ const internetProviders = [
       <option value="within_a_month">Within a month</option>
       <option value="just_exploring">Just exploring</option>
     </select>
+    <input type="text" name="budget" />
     <input type="file" name="floorplan" />
     <textarea name="other_details"></textarea>
   </form>
