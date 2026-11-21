@@ -2,6 +2,10 @@
   command = "astro build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [[redirects]]
   from = "/home"
   to = "/"
