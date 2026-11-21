@@ -23,6 +23,29 @@ function buildEmailBody(data) {
     .join("\n");
 }
 
+async function sendEmail(postmarkToken, message) {
+  const response = await fetch("https://api.postmarkapp.com/email", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "X-Postmark-Server-Token": postmarkToken,
+    },
+    body: JSON.stringify({ MessageStream: "outbound", ...message }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(
+      `Postmark request failed for ${message.To}:`,
+      response.status,
+      errorText,
+    );
+    return false;
+  }
+  return true;
+}
+
 export const handler = async (event) => {
   const { payload } = JSON.parse(event.body);
   const formName = payload.form_name;
@@ -33,6 +56,7 @@ export const handler = async (event) => {
 
   const data = payload.data;
   const name = [data.first_name, data.last_name].filter(Boolean).join(" ");
+  const firstName = data.first_name || "there";
 
   const postmarkToken = process.env.POSTMARK_SERVER_TOKEN;
   const fromEmail = process.env.POSTMARK_FROM_EMAIL;
@@ -44,29 +68,28 @@ export const handler = async (event) => {
     return { statusCode: 500, body: "Email not configured" };
   }
 
-  const response = await fetch("https://api.postmarkapp.com/email", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "X-Postmark-Server-Token": postmarkToken,
-    },
-    body: JSON.stringify({
-      From: fromEmail,
-      To: TO_EMAIL,
-      Subject: name
-        ? `New quote request from ${name}`
-        : "New quote request submitted",
-      TextBody: buildEmailBody(data),
-      MessageStream: "outbound",
-    }),
+  const notifyOk = await sendEmail(postmarkToken, {
+    From: fromEmail,
+    To: TO_EMAIL,
+    Subject: name
+      ? `New quote request from ${name}`
+      : "New quote request submitted",
+    TextBody: buildEmailBody(data),
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("Postmark request failed:", response.status, errorText);
-    return { statusCode: 502, body: "Failed to send notification email" };
+  let confirmationOk = true;
+  if (data.email) {
+    confirmationOk = await sendEmail(postmarkToken, {
+      From: fromEmail,
+      To: data.email,
+      Subject: "We've received your quote request",
+      TextBody: `Hi ${firstName},\n\nThanks for reaching out to Wi-Fi Pros — we've received your quote request and will follow up shortly with next steps.\n\nWi-Fi Pros Network Consulting`,
+    });
   }
 
-  return { statusCode: 200, body: "Notification sent" };
+  if (!notifyOk || !confirmationOk) {
+    return { statusCode: 502, body: "Failed to send one or more emails" };
+  }
+
+  return { statusCode: 200, body: "Notifications sent" };
 };
